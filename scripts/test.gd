@@ -2,4 +2,5 @@ extends Node2D
 @onready var label: Label = $Label
 
 func _ready() -> void:
-	label.text = ("hello world")
+	label.text = ("To the moon..?")
+	
