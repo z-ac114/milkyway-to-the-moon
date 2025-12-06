@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://1hpb0hrtgxv"]
+
+[ext_resource type="Script" uid="uid://cltepgpw1xs3w" path="res://scenes/s_1.gd" id="1_2ng2b"]
+[ext_resource type="Texture2D" uid="uid://dkjr8vgkktvbh" path="res://assets/Sprite-0002.png" id="1_wbibk"]
+[ext_resource type="Script" uid="uid://3gre0yewmhtr" path="res://scripts/rock.gd" id="2_3c855"]
+[ext_resource type="Theme" uid="uid://c0es2kte6qmmp" path="res://scripts/normal.tres" id="3_yyhw1"]
+[ext_resource type="Script" uid="uid://beky6a75cj5od" path="res://scripts/label_2.gd" id="6_gy76w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3c855"]
+size = Vector2(14, 14)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_2ng2b")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="rock" type="Area2D" parent="."]
+position = Vector2(-315.99997, 0)
+scale = Vector2(20, 20)
+script = ExtResource("2_3c855")
+
+[node name="Sprite2D" type="Sprite2D" parent="rock"]
+texture_filter = 1
+texture = ExtResource("1_wbibk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rock"]
+shape = SubResource("RectangleShape2D_3c855")
+
+[node name="Label2" type="Label" parent="."]
+texture_filter = 1
+offset_left = -116.0
+offset_top = -216.0
+offset_right = 135.0
+offset_bottom = -164.0
+theme = ExtResource("3_yyhw1")
+theme_override_font_sizes/font_size = 50
+script = ExtResource("6_gy76w")
+
+[node name="Label1" type="Label" parent="."]
+texture_filter = 1
+offset_left = -124.0
+offset_top = -289.0
+offset_right = 547.0
+offset_bottom = -237.0
+theme = ExtResource("3_yyhw1")
+theme_override_font_sizes/font_size = 50
+text = "Click the asteroid to get stone!"

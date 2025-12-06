@@ -48,7 +48,7 @@ theme_override_font_sizes/font_size = 60
 text = "Credits
 "
 
-[node name="Button3" type="Button" parent="."]
+[node name="QuitGame" type="Button" parent="."]
 offset_left = 655.0
 offset_top = 546.0
 offset_right = 956.0
@@ -98,7 +98,7 @@ theme_override_font_sizes/font_size = 60
 text = "Options
 "
 
-[node name="Button" type="Button" parent="."]
+[node name="Game" type="Button" parent="."]
 offset_left = 301.0
 offset_top = 454.0
 offset_right = 602.0
@@ -114,3 +114,6 @@ position = Vector2(885, 210)
 scale = Vector2(16.875, 16.875)
 sprite_frames = SubResource("SpriteFrames_uacia")
 autoplay = "default"
+
+[connection signal="pressed" from="QuitGame" to="." method="_on_quit_game_pressed"]
+[connection signal="pressed" from="Game" to="." method="_on_button_pressed"]
