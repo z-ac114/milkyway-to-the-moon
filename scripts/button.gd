@@ -2,6 +2,9 @@ extends Button
 @export var interval: int = 1
 
 func _ready():
+	pressed.connect(_on_button_pressed)
+
+func _on_button_pressed():
 	start_click()
 
 func start_click() -> void:
