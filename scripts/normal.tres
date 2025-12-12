@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://c0es2kte6qmmp"]
 
-[ext_resource type="FontFile" uid="uid://bw5uqntyitgj7" path="res://fonts/apex-font/ApexDemoItalic-gwjY6.ttf" id="1_8u2s6"]
+[ext_resource type="FontFile" uid="uid://b7rup2u7sgpov" path="res://fonts/Nasalization Rg.otf" id="1_8u2s6"]
 
 [resource]
 default_font = ExtResource("1_8u2s6")
-default_font_size = 40
+default_font_size = 30

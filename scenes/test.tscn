@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://c6jj2rm808kj3"]
+[gd_scene load_steps=9 format=3 uid="uid://c6jj2rm808kj3"]
 
 [ext_resource type="Script" uid="uid://x8rxq3u0py1u" path="res://scripts/test.gd" id="1_errlg"]
 [ext_resource type="Theme" uid="uid://c0es2kte6qmmp" path="res://scripts/normal.tres" id="2_74lek"]
 [ext_resource type="Texture2D" uid="uid://dnqp4dxm31k8i" path="res://assets/sprites/game_studio.png" id="2_iyx0m"]
-[ext_resource type="Script" uid="uid://ky3pqqw5yu7p" path="res://scripts/label.gd" id="4_74lek"]
 [ext_resource type="Texture2D" uid="uid://dhd4jtxdr5hpo" path="res://assets/sprites/kuro/base/idle.png" id="5_j5jx5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lpvoh"]
@@ -39,22 +38,22 @@ animations = [{
 script = ExtResource("1_errlg")
 
 [node name="Button4" type="Button" parent="."]
-offset_left = 660.0
-offset_top = 457.0
-offset_right = 961.0
-offset_bottom = 525.0
+offset_left = 652.0
+offset_top = 470.0
+offset_right = 1002.0
+offset_bottom = 530.0
 theme = ExtResource("2_74lek")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 40
 text = "Credits
 "
 
 [node name="QuitGame" type="Button" parent="."]
-offset_left = 655.0
-offset_top = 546.0
-offset_right = 956.0
-offset_bottom = 614.0
+offset_left = 652.0
+offset_top = 540.0
+offset_right = 1002.0
+offset_bottom = 600.0
 theme = ExtResource("2_74lek")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 40
 text = "Exit Game
 "
 
@@ -63,48 +62,49 @@ position = Vector2(128, 520)
 texture = ExtResource("2_iyx0m")
 
 [node name="Label" type="Label" parent="."]
-offset_right = 793.0
-offset_bottom = 145.0
+offset_left = 10.0
+offset_top = -26.0
+offset_right = 803.0
+offset_bottom = 119.0
 theme = ExtResource("2_74lek")
 theme_override_colors/font_color = Color(0.7529412, 0.7529412, 0.7529412, 1)
 theme_override_colors/font_outline_color = Color(0.53333336, 0.27450982, 0.5372549, 1)
 theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 70
 text = "To the moon..?"
 vertical_alignment = 1
-script = ExtResource("4_74lek")
 
 [node name="Label2" type="Label" parent="."]
 offset_left = 18.0
-offset_top = 101.0
+offset_top = 69.0
 offset_right = 811.0
-offset_bottom = 246.0
+offset_bottom = 214.0
 theme = ExtResource("2_74lek")
 theme_override_colors/font_color = Color(0.7529412, 0.7529412, 0.7529412, 1)
 theme_override_colors/font_outline_color = Color(0.53333336, 0.27450982, 0.5372549, 1)
 theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 40
 text = "- a sequel of Climb the Clouds...
 Kuro is back...?"
 vertical_alignment = 1
 
 [node name="Button2" type="Button" parent="."]
-offset_left = 301.0
-offset_top = 545.0
-offset_right = 602.0
-offset_bottom = 613.0
+offset_left = 300.0
+offset_top = 540.0
+offset_right = 650.0
+offset_bottom = 600.0
 theme = ExtResource("2_74lek")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 40
 text = "Options
 "
 
 [node name="Game" type="Button" parent="."]
-offset_left = 301.0
-offset_top = 454.0
-offset_right = 602.0
-offset_bottom = 522.0
+offset_left = 300.0
+offset_top = 470.0
+offset_right = 650.0
+offset_bottom = 530.0
 theme = ExtResource("2_74lek")
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 40
 text = "Start Game
 "
 

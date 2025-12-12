@@ -5,9 +5,10 @@ func _ready():
 	pressed.connect(_on_button_pressed)
 
 func _on_button_pressed():
-	start_click()
+		start_click()
+		disabled = true
 
 func start_click() -> void:
-	await get_tree().create_timer(interval).timeout
-	Global._rock_1click()
-	start_click() 
+		await get_tree().create_timer(interval).timeout
+		Global._rock_1click()
+		start_click()
