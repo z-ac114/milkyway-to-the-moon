@@ -7,7 +7,7 @@ var rock1mult: float = 1
 
 func _rock_1click():
 	rock += 1*rock1mult
-	coin += 0.1*rock1mult
+	coin = rock
 
 func f_n(num: float) -> String:
 	if num >= 1_000_000_000_000_000:
