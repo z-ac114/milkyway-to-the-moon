@@ -5,6 +5,7 @@ var iron: int
 var coin: float
 var rock1mult: float = 1
 var current_interval: float
+var cps: float = 0.0
 
 func _rock_1click():
 	rock += 1*rock1mult

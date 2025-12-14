@@ -2,10 +2,19 @@ extends Area2D
 
 @export var dps = 9000
 @onready var rock: Sprite2D = $Sprite2D
+var cts: int = 0
+var clicktime: float = 0.0
+
 
 
 func _process(delta):
 	rotation_degrees += deg_to_rad(dps) * delta
+	clicktime += delta
+	if clicktime >= 1.0:
+		Global.cps = cts / clicktime
+		cts = 0
+		clicktime = 0.0
+	
 	if Global.rock > 1000000:
 		rock.texture = preload("res://assets/emerald.png")
 	elif Global.rock > 100000:
@@ -16,11 +25,12 @@ func _process(delta):
 		rock.texture = preload("res://assets/iron.png")
 	elif Global.rock > 100:
 		rock.texture = preload("res://assets/copper.png")
-	
+
 
 
 func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed:
+		cts += 1
 		Global._rock_1click()
 		if Global.rock > 1000000:
 			Global.rock1mult += ((Global.rock-500000)*0.0009)

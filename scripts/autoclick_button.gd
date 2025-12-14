@@ -23,11 +23,9 @@ func _on_button_pressed():
 		upgrade_level += 1
 		update_interval()
 		update_text()
-	else:
-		print("Not enough rcoin! Need:", cost)
 
 func update_interval():
-	Global.current_interval = base_interval * pow(0.75, upgrade_level)
+	Global.current_interval = base_interval * pow(0.95, upgrade_level)
 
 func get_upgrade_cost() -> int:
 	return int(base_cost * pow(cost_multiplier, upgrade_level))
