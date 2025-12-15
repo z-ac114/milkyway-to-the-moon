@@ -15,16 +15,26 @@ func _process(delta):
 		cts = 0
 		clicktime = 0.0
 	
-	if Global.rock > 1000000:
+	if Global.rock > 10000000:
+		Global.rocktier = "lapis"
+		rock.texture = preload("res://assets/lapis.png")	
+	elif Global.rock > 1000000:
+		Global.rocktier = "emerald"
 		rock.texture = preload("res://assets/emerald.png")
 	elif Global.rock > 100000:
+		Global.rocktier = "zinc"
 		rock.texture = preload("res://assets/zinc.png")
 	elif Global.rock > 10000:
+		Global.rocktier = "gold"
 		rock.texture = preload("res://assets/gold.png")
 	elif Global.rock > 1000:
+		Global.rocktier = "iron"
 		rock.texture = preload("res://assets/iron.png")
 	elif Global.rock > 100:
+		Global.rocktier = "copper"
 		rock.texture = preload("res://assets/copper.png")
+	else:
+		Global.rocktier = "rock"
 
 
 
@@ -32,7 +42,9 @@ func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed:
 		cts += 1
 		Global._rock_1click()
-		if Global.rock > 1000000:
+		if Global.rock > 10000000:
+			Global.rock1mult += ((Global.rock-5000000)*0.001)
+		elif Global.rock > 1000000:
 			Global.rock1mult += ((Global.rock-500000)*0.0009)
 		elif Global.rock > 100000:
 			Global.rock1mult += ((Global.rock-50000)*0.0007)
