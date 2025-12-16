@@ -35,6 +35,7 @@ func _process(delta):
 		rock.texture = preload("res://assets/copper.png")
 	else:
 		Global.rocktier = "rock"
+		rock.texture = preload("res://assets/rock.png")
 
 
 

@@ -1,15 +1,57 @@
 extends Node
 
-var rock: int
-var iron: int
-var coin: float
 var rock1mult: float = 1
 var current_interval: float
 var cps: float = 0.0
 var rocktier: String = "rock"
+var rock: float = 0
+var copper: float = 0
+var iron: float = 0
+var gold: float = 0
+var zinc: float = 0
+var emerald: float = 0
+var lapis: float = 0
+var coin: float = 0.0
 
 func _rock_1click():
-	rock += 1*rock1mult
+	match rocktier:
+		"rock":
+			rock += randf_range(0.1,1) * rock1mult
+		"copper":
+			rock += randf_range(1,2) * rock1mult
+			copper += randf_range(0.1,1) * rock1mult
+		"iron":
+			rock += randf_range(1,3) * rock1mult
+			copper += randf_range(0.5,2) * rock1mult
+			iron += randf_range(0.1,1) * rock1mult
+		"gold":
+			rock += randf_range(2,5) * rock1mult
+			copper += randf_range(1,3) * rock1mult
+			iron += randf_range(0.5,2) * rock1mult
+			gold += randf_range(0.1,1) * rock1mult
+		"zinc":
+			rock += randf_range(3,7) * rock1mult
+			copper += randf_range(2,5) * rock1mult
+			iron += randf_range(1,3) * rock1mult
+			gold += randf_range(0.5,2) * rock1mult
+			zinc += randf_range(0.1,1) * rock1mult
+		"emerald":
+			rock += randf_range(5,10) * rock1mult
+			copper += randf_range(3,7) * rock1mult
+			iron += randf_range(2,5) * rock1mult
+			gold += randf_range(1,3) * rock1mult
+			zinc += randf_range(0.5,2) * rock1mult
+			emerald += randf_range(0.1,1) * rock1mult
+		"lapis":
+			rock += randf_range(10,20) * rock1mult
+			copper += randf_range(5,10) * rock1mult
+			iron += randf_range(3,7) * rock1mult
+			gold += randf_range(2,5) * rock1mult
+			zinc += randf_range(1,3) * rock1mult
+			emerald += randf_range(0.5,2) * rock1mult
+			lapis += randf_range(0.1,1) * rock1mult
+		_:
+			rock += randf_range(0.1,1) * rock1mult
 
 func f_n(num: float) -> String:
 	if num >= 1_000_000_000_000_000:

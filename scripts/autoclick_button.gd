@@ -18,8 +18,8 @@ func _on_button_pressed():
 		button_e = true
 		start_click()
 	var cost = get_upgrade_cost()
-	if Global.rock >= cost:
-		Global.rock -= cost
+	if Global.coin >= cost:
+		Global.coin -= cost
 		upgrade_level += 1
 		update_interval()
 		update_text()
