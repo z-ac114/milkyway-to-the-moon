@@ -1,33 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://clyvckkgasugt"]
+[gd_scene load_steps=7 format=3 uid="uid://clyvckkgasugt"]
 
 [ext_resource type="Script" uid="uid://bo7cmm3c22xll" path="res://scripts/rocket.gd" id="1_8kmw3"]
-[ext_resource type="Texture2D" uid="uid://cga3jo41cfc4m" path="res://assets/rocketfin.png" id="1_3341w"]
-[ext_resource type="Texture2D" uid="uid://5ptxah52bjge" path="res://assets/topcone.png" id="2_dkv7l"]
 [ext_resource type="Theme" uid="uid://c0es2kte6qmmp" path="res://scripts/normal.tres" id="3_agf72"]
 [ext_resource type="Script" uid="uid://cxdo610c8we7b" path="res://scripts/display_1.gd" id="4_y2y7n"]
 [ext_resource type="Texture2D" uid="uid://corhksc3axq45" path="res://assets/rockcoin.png" id="6_g6bar"]
 [ext_resource type="Script" uid="uid://dg2yw3k74hrpy" path="res://scripts/coin_label.gd" id="7_qolsk"]
+[ext_resource type="Script" uid="uid://kui6ji44u1p1" path="res://scripts/rocket_tier.gd" id="9_fa8w1"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_8kmw3")
-
-[node name="Rocketfin2" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(337.00006, 398)
-scale = Vector2(5, 5)
-texture = ExtResource("1_3341w")
-
-[node name="Rocketfin" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(163.00003, 399)
-scale = Vector2(5, 5)
-texture = ExtResource("1_3341w")
-
-[node name="Topcone" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(249, 166.00002)
-scale = Vector2(5, 5)
-texture = ExtResource("2_dkv7l")
 
 [node name="Display1" type="Label" parent="."]
 texture_filter = 1
@@ -79,5 +60,70 @@ offset_bottom = 64.0
 theme = ExtResource("3_agf72")
 theme_override_font_sizes/font_size = 50
 script = ExtResource("7_qolsk")
+
+[node name="CraftButton" type="Button" parent="."]
+offset_left = 634.0
+offset_top = 595.0
+offset_right = 835.0
+offset_bottom = 639.0
+theme = ExtResource("3_agf72")
+text = "Craft Rocket"
+
+[node name="RocketTier" type="Label" parent="."]
+texture_filter = 1
+offset_left = 933.0
+offset_top = 376.0
+offset_right = 1148.0
+offset_bottom = 437.0
+theme = ExtResource("3_agf72")
+theme_override_font_sizes/font_size = 30
+script = ExtResource("9_fa8w1")
+
+[node name="UpgradePlatingButton" type="Button" parent="."]
+offset_left = 599.0
+offset_top = 208.0
+offset_right = 862.0
+offset_bottom = 252.0
+theme = ExtResource("3_agf72")
+text = "Upgrade Plating"
+
+[node name="UpgradeEngineButton" type="Button" parent="."]
+offset_left = 599.0
+offset_top = 286.0
+offset_right = 864.0
+offset_bottom = 330.0
+theme = ExtResource("3_agf72")
+text = "Upgrade Engine"
+
+[node name="UpgradeFinsButton" type="Button" parent="."]
+offset_left = 639.0
+offset_top = 365.0
+offset_right = 845.0
+offset_bottom = 409.0
+theme = ExtResource("3_agf72")
+text = "Upgade Fins"
+
+[node name="UpgradeTopConeButton" type="Button" parent="."]
+offset_left = 570.0
+offset_top = 447.0
+offset_right = 870.0
+offset_bottom = 491.0
+theme = ExtResource("3_agf72")
+text = "Upgrade Top Cone"
+
+[node name="UpgradeTankButton" type="Button" parent="."]
+offset_left = 622.0
+offset_top = 509.0
+offset_right = 852.0
+offset_bottom = 553.0
+theme = ExtResource("3_agf72")
+text = "Upgrade Tank"
+
+[node name="Plating1" type="TextureRect" parent="."]
+texture_filter = 1
+offset_left = 67.0
+offset_top = 157.0
+offset_right = 285.0
+offset_bottom = 375.0
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

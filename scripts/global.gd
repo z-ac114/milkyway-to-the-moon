@@ -12,6 +12,14 @@ var zinc: float = 0
 var emerald: float = 0
 var lapis: float = 0
 var coin: float = 0.0
+var rocket_tier: int = 0
+var rocket_levels = {
+	"plating": 0,
+	"engine": 0,
+	"fins": 0,
+	"topcone": 0,
+	"tank": 0
+}
 
 func _rock_1click():
 	match rocktier:

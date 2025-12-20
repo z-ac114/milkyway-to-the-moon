@@ -1,6 +1,148 @@
 extends Node2D
+
 @onready var back_button: Button = $BackButton
+@onready var upgrade_plating_button: Button = $UpgradePlatingButton
+@onready var upgrade_engine_button: Button = $UpgradeEngineButton
+@onready var upgrade_fins_button: Button = $UpgradeFinsButton
+@onready var upgrade_topcone_button: Button = $UpgradeTopConeButton
+@onready var upgrade_tank_button: Button = $UpgradeTankButton
+@onready var craft_button: Button = $CraftButton
+
+@onready var plating_display: TextureRect = $Plating1
+@onready var plating_1: TextureRect = $Plating1
+
+# --- Costs per part ---
+var rocket_parts = {
+	"plating": {
+		"costs": [
+			{"copper": 10},
+			{"iron": 15, "copper": 10},
+			{"gold": 20, "iron": 15},
+			{"zinc": 25, "gold": 20},
+			{"emerald": 30, "zinc": 25},
+			{"lapis": 35, "emerald": 30},
+			{"diamond": 40, "lapis": 35}
+		]
+	},
+	"engine": {
+		"costs": [
+			{"copper": 12},
+			{"iron": 18, "copper": 12},
+			{"gold": 24, "iron": 18},
+			{"zinc": 30, "gold": 24},
+			{"emerald": 36, "zinc": 30},
+			{"lapis": 42, "emerald": 36},
+			{"diamond": 50, "lapis": 42}
+		]
+	},
+	"fins": {
+		"costs": [
+			{"copper": 8},
+			{"iron": 12, "copper": 8},
+			{"gold": 16, "iron": 12},
+			{"zinc": 20, "gold": 16},
+			{"emerald": 24, "zinc": 20},
+			{"lapis": 28, "emerald": 24},
+			{"diamond": 32, "lapis": 28}
+		]
+	},
+	"topcone": {
+		"costs": [
+			{"copper": 14},
+			{"iron": 20, "copper": 14},
+			{"gold": 26, "iron": 20},
+			{"zinc": 32, "gold": 26},
+			{"emerald": 38, "zinc": 32},
+			{"lapis": 44, "emerald": 38},
+			{"diamond": 50, "lapis": 44}
+		]
+	},
+	"tank": {
+		"costs": [
+			{"copper": 16},
+			{"iron": 22, "copper": 16},
+			{"gold": 28, "iron": 22},
+			{"zinc": 34, "gold": 28},
+			{"emerald": 40, "zinc": 34},
+			{"lapis": 46, "emerald": 40},
+			{"diamond": 52, "lapis": 46}
+		]
+	}
+}
+
+# --- Textures per part ---
+var plating_textures = [
+	preload("res://assets/blankplate.png"),
+	preload("res://assets/copperplate.png"),
+	preload("res://assets/steelplate.png"),
+	preload("res://assets/goldplate.png"),
+	preload("res://assets/zincplate.png"),
+	preload("res://assets/emeraldplate.png"),
+	preload("res://assets/lapisplate.png"),
+	preload("res://assets/diamondplate.png")
+]
 
 
+func _ready() -> void:
+	upgrade_plating_button.connect("pressed", Callable(self, "_on_upgrade_plating_pressed"))
+	upgrade_engine_button.connect("pressed", Callable(self, "_on_upgrade_engine_pressed"))
+	upgrade_fins_button.connect("pressed", Callable(self, "_on_upgrade_fins_pressed"))
+	upgrade_topcone_button.connect("pressed", Callable(self, "_on_upgrade_topcone_pressed"))
+	upgrade_tank_button.connect("pressed", Callable(self, "_on_upgrade_tank_pressed"))
+	craft_button.connect("pressed", Callable(self, "_on_craft_pressed"))
+
+	# Initialize textures based on current levels
+	plating_display.texture = plating_textures[Global.rocket_levels["plating"]]
 func _on_back_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/s1.tscn")
+
+func _on_upgrade_plating_pressed() -> void: upgrade_part("plating")
+func _on_upgrade_engine_pressed() -> void: upgrade_part("engine")
+func _on_upgrade_fins_pressed() -> void: upgrade_part("fins")
+func _on_upgrade_topcone_pressed() -> void: upgrade_part("topcone")
+func _on_upgrade_tank_pressed() -> void: upgrade_part("tank")
+func _on_craft_pressed() -> void: craft_rocket()
+
+func upgrade_part(part_name: String):
+	var level = Global.rocket_levels[part_name]
+	var costs = rocket_parts[part_name]["costs"]
+
+	if level >= costs.size():
+		print(part_name, "is fully upgraded!")
+		return
+
+	var cost = costs[level]
+	if can_afford(cost):
+		deduct_cost(cost)
+		Global.rocket_levels[part_name] += 1
+
+		match part_name:
+			"plating": plating_1.texture = plating_textures[Global.rocket_levels["plating"]]
+
+		print("Upgraded", part_name, "to level", Global.rocket_levels[part_name])
+	else:
+		print("Not enough resources to upgrade", part_name)
+
+func can_afford(cost: Dictionary) -> bool:
+	for material in cost.keys():
+		if Global.get(material) < cost[material]:
+			return false
+	return true
+
+func deduct_cost(cost: Dictionary):
+	for material in cost.keys():
+		Global.set(material, Global.get(material) - cost[material])
+
+func craft_rocket():
+	var levels = []
+	for part_name in rocket_parts.keys():
+		levels.append(Global.rocket_levels[part_name])
+
+	var all_same = levels.all(func(l): return l == levels[0])
+	var minimum_level = 3
+	var all_minimum = levels.all(func(l): return l >= minimum_level)
+
+	if all_same or all_minimum:
+		print("Rocket crafted successfully!")
+	else:
+		print("Cannot craft rocket, requirements not met.")
