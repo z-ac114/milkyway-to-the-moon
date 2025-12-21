@@ -8,10 +8,12 @@ extends Node2D
 @onready var upgrade_tank_button: Button = $UpgradeTankButton
 @onready var craft_button: Button = $CraftButton
 
-@onready var plating_display: TextureRect = $Plating1
 @onready var plating_1: TextureRect = $Plating1
+@onready var plating_2: TextureRect = $Plating2
+@onready var fins_1: TextureRect = $Fins1
+@onready var fins_2: TextureRect = $Fins2
 
-# --- Costs per part ---
+
 var rocket_parts = {
 	"plating": {
 		"costs": [
@@ -82,6 +84,17 @@ var plating_textures = [
 	preload("res://assets/diamondplate.png")
 ]
 
+var fins_textures = [
+	preload("res://assets/blankplate.png"),
+	preload("res://assets/copperfin.png"),
+	preload("res://assets/steelfin.png"),
+	preload("res://assets/goldfin.png"),
+	preload("res://assets/copperfin.png"),
+	preload("res://assets/emeraldfin.png"),
+	preload("res://assets/lapisfin.png"),
+	preload("res://assets/diamondfin.png")
+]
+
 
 func _ready() -> void:
 	upgrade_plating_button.connect("pressed", Callable(self, "_on_upgrade_plating_pressed"))
@@ -90,9 +103,11 @@ func _ready() -> void:
 	upgrade_topcone_button.connect("pressed", Callable(self, "_on_upgrade_topcone_pressed"))
 	upgrade_tank_button.connect("pressed", Callable(self, "_on_upgrade_tank_pressed"))
 	craft_button.connect("pressed", Callable(self, "_on_craft_pressed"))
-
-	# Initialize textures based on current levels
-	plating_display.texture = plating_textures[Global.rocket_levels["plating"]]
+	plating_1.texture = plating_textures[Global.rocket_levels["plating"]]
+	plating_2.texture = plating_textures[Global.rocket_levels["plating"]]
+	fins_1.texture = fins_textures[Global.rocket_levels["fins"]]
+	fins_2.texture = fins_textures[Global.rocket_levels["fins"]]
+	
 func _on_back_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/s1.tscn")
 
@@ -117,11 +132,16 @@ func upgrade_part(part_name: String):
 		Global.rocket_levels[part_name] += 1
 
 		match part_name:
-			"plating": plating_1.texture = plating_textures[Global.rocket_levels["plating"]]
+			"plating":
+				plating_1.texture = plating_textures[Global.rocket_levels["plating"]]
+				plating_2.texture = plating_textures[Global.rocket_levels["plating"]]
+			"fins":
+				fins_1.texture = fins_textures[Global.rocket_levels["fins"]]
+				fins_2.texture = fins_textures[Global.rocket_levels["fins"]]
 
-		print("Upgraded", part_name, "to level", Global.rocket_levels[part_name])
+		print("Upgraded ", part_name, "to level ", Global.rocket_levels[part_name])
 	else:
-		print("Not enough resources to upgrade", part_name)
+		print("Not enough resources to upgrade ", part_name)
 
 func can_afford(cost: Dictionary) -> bool:
 	for material in cost.keys():
@@ -143,6 +163,6 @@ func craft_rocket():
 	var all_minimum = levels.all(func(l): return l >= minimum_level)
 
 	if all_same or all_minimum:
-		print("Rocket crafted successfully!")
+		print("rocket crafted")
 	else:
-		print("Cannot craft rocket, requirements not met.")
+		print("failed to craft")

@@ -11,4 +11,5 @@ func _process(delta):
 	"Zinc: "    + str(Global.f_n(Global.zinc))    + "\n" + \
 	"Emerald: " + str(Global.f_n(Global.emerald)) + "\n" + \
 	"Lapis: "   + str(Global.f_n(Global.lapis))   + "\n" + \
+	"Diamond: "   + str(Global.f_n(Global.diamond))   + "\n" + \
 	"Mult: "    + str(Global.f_n(Global.rock1mult))

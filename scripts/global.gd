@@ -11,6 +11,7 @@ var gold: float = 0
 var zinc: float = 0
 var emerald: float = 0
 var lapis: float = 0
+var diamond: float = 0
 var coin: float = 0.0
 var rocket_tier: int = 0
 var rocket_levels = {
@@ -58,6 +59,15 @@ func _rock_1click():
 			zinc += randf_range(1,3) * rock1mult
 			emerald += randf_range(0.5,2) * rock1mult
 			lapis += randf_range(0.1,1) * rock1mult
+		"diamond":
+			rock += randf_range(20,50) * rock1mult
+			copper += randf_range(10,20) * rock1mult
+			iron += randf_range(5,10) * rock1mult
+			gold += randf_range(3,7) * rock1mult
+			zinc += randf_range(2,5) * rock1mult
+			emerald += randf_range(1,3) * rock1mult
+			lapis += randf_range(0.5,2) * rock1mult
+			diamond += randf_range(0.1,1) * rock1mult
 		_:
 			rock += randf_range(0.1,1) * rock1mult
 

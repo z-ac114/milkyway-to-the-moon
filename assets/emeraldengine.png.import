@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5ptxah52bjge"
-path="res://.godot/imported/topcone.png-9a8195c4a3b2387a72955dd24a290eb6.ctex"
+uid="uid://dol1a3khtv56h"
+path="res://.godot/imported/emeraldengine.png-ebd36e5c83d91984af6f11de63af9e70.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/topcone.png"
-dest_files=["res://.godot/imported/topcone.png-9a8195c4a3b2387a72955dd24a290eb6.ctex"]
+source_file="res://assets/emeraldengine.png"
+dest_files=["res://.godot/imported/emeraldengine.png-ebd36e5c83d91984af6f11de63af9e70.ctex"]
 
 [params]
 

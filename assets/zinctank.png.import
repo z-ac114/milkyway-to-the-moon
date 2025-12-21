@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cga3jo41cfc4m"
-path="res://.godot/imported/rocketfin.png-51a61a6c1833f9a32a3b775c023077a4.ctex"
+uid="uid://c877milps6851"
+path="res://.godot/imported/zinctank.png-a28ba26373e42daabe0f733bc85f082c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/rocketfin.png"
-dest_files=["res://.godot/imported/rocketfin.png-51a61a6c1833f9a32a3b775c023077a4.ctex"]
+source_file="res://assets/zinctank.png"
+dest_files=["res://.godot/imported/zinctank.png-a28ba26373e42daabe0f733bc85f082c.ctex"]
 
 [params]
 
