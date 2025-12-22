@@ -12,6 +12,10 @@ extends Node2D
 @onready var plating_2: TextureRect = $Plating2
 @onready var fins_1: TextureRect = $Fins1
 @onready var fins_2: TextureRect = $Fins2
+@onready var engine_1: TextureRect = $Engine1
+@onready var tank_1: TextureRect = $Tank1
+@onready var tank_2: TextureRect = $Tank2
+@onready var top_cone_1: TextureRect = $TopCone1
 
 
 var rocket_parts = {
@@ -72,11 +76,10 @@ var rocket_parts = {
 	}
 }
 
-# --- Textures per part ---
 var plating_textures = [
-	preload("res://assets/blankplate.png"),
-	preload("res://assets/copperplate.png"),
 	preload("res://assets/steelplate.png"),
+	preload("res://assets/copperplate.png"),
+	preload("res://assets/ironplate.png"),
 	preload("res://assets/goldplate.png"),
 	preload("res://assets/zincplate.png"),
 	preload("res://assets/emeraldplate.png"),
@@ -85,16 +88,46 @@ var plating_textures = [
 ]
 
 var fins_textures = [
-	preload("res://assets/blankplate.png"),
-	preload("res://assets/copperfin.png"),
 	preload("res://assets/steelfin.png"),
-	preload("res://assets/goldfin.png"),
 	preload("res://assets/copperfin.png"),
+	preload("res://assets/ironfin.png"),
+	preload("res://assets/goldfin.png"),
+	preload("res://assets/zincfin.png"),
 	preload("res://assets/emeraldfin.png"),
 	preload("res://assets/lapisfin.png"),
 	preload("res://assets/diamondfin.png")
 ]
 
+var engine_textures = [
+	preload("res://assets/steelengine.png"),
+	preload("res://assets/copperengine.png"),
+	preload("res://assets/ironengine.png"),
+	preload("res://assets/goldengine.png"),
+	preload("res://assets/zincengine.png"),
+	preload("res://assets/emeraldengine.png"),
+	preload("res://assets/lapisengine.png"),
+	preload("res://assets/diamondengine.png")
+]
+var tank_textures = [
+	preload("res://assets/steeltank.png"),
+	preload("res://assets/coppertank.png"),
+	preload("res://assets/irontank.png"),
+	preload("res://assets/goldtank.png"),
+	preload("res://assets/zinctank.png"),
+	preload("res://assets/emeraldtank.png"),
+	preload("res://assets/lapistank.png"),
+	preload("res://assets/diamondtank.png")
+]
+var top_cone_textures = [
+	preload("res://assets/steeltopcone.png"),
+	preload("res://assets/coppertopcone.png"),
+	preload("res://assets/irontopcone.png"),
+	preload("res://assets/goldtopcone.png"),
+	preload("res://assets/zinctopcone.png"),
+	preload("res://assets/emeraldtopcone.png"),
+	preload("res://assets/lapistopcone.png"),
+	preload("res://assets/diamondtopcone.png")
+]
 
 func _ready() -> void:
 	upgrade_plating_button.connect("pressed", Callable(self, "_on_upgrade_plating_pressed"))
@@ -107,6 +140,10 @@ func _ready() -> void:
 	plating_2.texture = plating_textures[Global.rocket_levels["plating"]]
 	fins_1.texture = fins_textures[Global.rocket_levels["fins"]]
 	fins_2.texture = fins_textures[Global.rocket_levels["fins"]]
+	engine_1.texture = engine_textures[Global.rocket_levels["engine"]]
+	tank_1.texture = tank_textures[Global.rocket_levels["tank"]]
+	tank_2.texture = tank_textures[Global.rocket_levels["tank"]]
+	top_cone_1.texture = top_cone_textures[Global.rocket_levels["topcone"]]
 	
 func _on_back_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/s1.tscn")
@@ -138,6 +175,13 @@ func upgrade_part(part_name: String):
 			"fins":
 				fins_1.texture = fins_textures[Global.rocket_levels["fins"]]
 				fins_2.texture = fins_textures[Global.rocket_levels["fins"]]
+			"engine":
+				engine_1.texture = engine_textures[Global.rocket_levels["engine"]]
+			"tank":
+				tank_1.texture = tank_textures[Global.rocket_levels["tank"]]
+				tank_2.texture = tank_textures[Global.rocket_levels["tank"]]
+			"topcone":
+				top_cone_1.texture = top_cone_textures[Global.rocket_levels["topcone"]]
 
 		print("Upgraded ", part_name, "to level ", Global.rocket_levels[part_name])
 	else:
@@ -159,10 +203,10 @@ func craft_rocket():
 		levels.append(Global.rocket_levels[part_name])
 
 	var all_same = levels.all(func(l): return l == levels[0])
-	var minimum_level = 3
+	var minimum_level = 1
 	var all_minimum = levels.all(func(l): return l >= minimum_level)
 
-	if all_same or all_minimum:
+	if all_same and all_minimum:
 		print("rocket crafted")
 	else:
 		print("failed to craft")

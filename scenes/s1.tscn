@@ -113,6 +113,9 @@ offset_bottom = 207.0
 theme = ExtResource("3_yyhw1")
 text = "Auto Mine (1 click/sec)"
 script = ExtResource("8_kky4p")
+base_interval = null
+base_cost = null
+cost_multiplier = null
 
 [node name="CPSLAbel" type="Label" parent="."]
 texture_filter = 1
