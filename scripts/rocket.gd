@@ -16,7 +16,7 @@ extends Node2D
 @onready var tank_1: TextureRect = $Tank1
 @onready var tank_2: TextureRect = $Tank2
 @onready var top_cone_1: TextureRect = $TopCone1
-
+@onready var rocket: TextureRect = $Rocket
 
 var rocket_parts = {
 	"plating": {
@@ -128,6 +128,7 @@ var top_cone_textures = [
 	preload("res://assets/lapistopcone.png"),
 	preload("res://assets/diamondtopcone.png")
 ]
+var original_positions := {}
 
 func _ready() -> void:
 	upgrade_plating_button.connect("pressed", Callable(self, "_on_upgrade_plating_pressed"))
@@ -144,6 +145,7 @@ func _ready() -> void:
 	tank_1.texture = tank_textures[Global.rocket_levels["tank"]]
 	tank_2.texture = tank_textures[Global.rocket_levels["tank"]]
 	top_cone_1.texture = top_cone_textures[Global.rocket_levels["topcone"]]
+	rocket.visible = false
 	
 func _on_back_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/s1.tscn")
@@ -207,6 +209,49 @@ func craft_rocket():
 	var all_minimum = levels.all(func(l): return l >= minimum_level)
 
 	if all_same and all_minimum:
-		print("rocket crafted")
+		print("rocket crafted sucessfully with level :" + Global.rocket_levels["plating"])
+		start_crafting_animation()
 	else:
 		print("failed to craft")
+
+
+func start_crafting_animation():
+	var parts = [
+		plating_1, plating_2,
+		fins_1, fins_2,
+		engine_1,
+		tank_1, tank_2,
+		top_cone_1
+	]
+	for p in parts:
+		original_positions[p] = p.global_position
+
+	var center = rocket.global_position
+	var delay_step = 0.2
+	var start_radius = 150.0
+	var duration = 2.0
+
+	for i in range(parts.size()):
+		var part = parts[i]
+		var angle = (TAU / parts.size()) * i
+		var tween = create_tween()
+
+		tween.tween_method(
+			func(new_radius):
+				var spin_angle = angle + (Time.get_ticks_msec() / 200.0)
+				var pos = center + Vector2(cos(spin_angle), sin(spin_angle)) * new_radius
+				part.global_position = pos, start_radius, 0.0, duration
+			).set_delay(i * delay_step)
+
+		tween.tween_callback(Callable(self, "_on_part_animation_finished").bind(part)).set_delay(i * delay_step + duration)
+		rocket.visible = true
+
+
+func _on_part_animation_finished(part: TextureRect):
+	rocket.visible = false
+	part.visible = false
+	await get_tree().create_timer(1.0).timeout
+	for p in original_positions.keys():
+		p.global_position = original_positions[p]
+		p.visible = true
+		p.modulate.a = 1.0
