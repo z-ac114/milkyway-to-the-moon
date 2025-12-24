@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpds8ihlrmom1"]
+
+[ext_resource type="Script" uid="uid://bjosww54mnhuv" path="res://scripts/credits.gd" id="1_2ckv8"]
+[ext_resource type="Theme" uid="uid://c0es2kte6qmmp" path="res://scripts/normal.tres" id="2_0ctdu"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_2ckv8")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme = ExtResource("2_0ctdu")
+theme_override_font_sizes/font_size = 60
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 108.0
+offset_top = -167.0
+offset_right = 396.0
+offset_bottom = -63.5
+grow_vertical = 2
+theme = ExtResource("2_0ctdu")
+text = "Code : Me
+Art : Me
+Emotional Support : All the wonderful people on HC Slack!"
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -8.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_0ctdu")
+theme_override_font_sizes/font_size = 40
+text = "Back"
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

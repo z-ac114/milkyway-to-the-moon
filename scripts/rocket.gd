@@ -209,7 +209,8 @@ func craft_rocket():
 	var all_minimum = levels.all(func(l): return l >= minimum_level)
 
 	if all_same and all_minimum:
-		print("rocket crafted sucessfully with level :" + Global.rocket_levels["plating"])
+		print("rocket crafted sucessfully with level :" + str(Global.rocket_levels["plating"]))
+		Global.rocket_tier = Global.rocket_levels["plating"]
 		start_crafting_animation()
 	else:
 		print("failed to craft")
