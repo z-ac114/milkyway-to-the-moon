@@ -7,6 +7,7 @@ extends Node2D
 @onready var upgrade_topcone_button: Button = $UpgradeTopConeButton
 @onready var upgrade_tank_button: Button = $UpgradeTankButton
 @onready var craft_button: Button = $CraftButton
+@onready var launch_button: Button = $LaunchButton
 
 @onready var plating_1: TextureRect = $Plating1
 @onready var plating_2: TextureRect = $Plating2
@@ -111,6 +112,9 @@ func _update_textures():
 
 func _on_back_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/s1.tscn")
+	
+func _on_launch_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/rocketlaunch.tscn")
 
 func _on_upgrade_plating_pressed() -> void: upgrade_part("plating")
 func _on_upgrade_engine_pressed() -> void: upgrade_part("engine")
@@ -158,6 +162,8 @@ func craft_rocket():
 	if all_same and all_minimum:
 		print("Rocket crafted successfully with level: " + str(Global.rocket_levels["plating"]))
 		rocket.texture = rocket_textures[Global.rocket_levels["plating"]]
+		Global.rocket_inventory.append(Global.rocket_levels["plating"])
+		craft_button.disabled = true
 		start_crafting_animation()
 	else:
 		print("Failed to craft - all parts must be at the same level (minimum level 1)")
@@ -214,3 +220,4 @@ func _on_part_animation_finished(part: TextureRect):
 			p.visible = true
 			p.modulate.a = 1.0
 		original_positions.clear()
+		craft_button.disabled = false

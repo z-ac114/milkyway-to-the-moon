@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://c1bmk6oyoig5m"]
+[gd_scene load_steps=3 format=3 uid="uid://c1bmk6oyoig5m"]
 
+[ext_resource type="Script" uid="uid://bl41wdh8i162m" path="res://scripts/rocketlaunch.gd" id="1_d75br"]
 [ext_resource type="Theme" uid="uid://c0es2kte6qmmp" path="res://scripts/normal.tres" id="1_gxgo8"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_d75br")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -19,3 +21,61 @@ theme = ExtResource("1_gxgo8")
 theme_override_font_sizes/font_size = 40
 text = "Launch Your Rockets!"
 horizontal_alignment = 1
+
+[node name="Slot1" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 72.0
+offset_top = 100.0
+offset_right = 316.0
+offset_bottom = 498.0
+
+[node name="Slot2" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 472.0
+offset_top = 100.0
+offset_right = 716.0
+offset_bottom = 498.0
+
+[node name="Slot3" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 872.0
+offset_top = 100.0
+offset_right = 1116.0
+offset_bottom = 498.0
+
+[node name="Launch1" type="Button" parent="CanvasLayer"]
+offset_left = 125.0
+offset_top = 596.0
+offset_right = 260.0
+offset_bottom = 640.0
+theme = ExtResource("1_gxgo8")
+text = "Launch!"
+
+[node name="Launch2" type="Button" parent="CanvasLayer"]
+offset_left = 525.0
+offset_top = 596.0
+offset_right = 660.0
+offset_bottom = 640.0
+theme = ExtResource("1_gxgo8")
+text = "Launch!"
+
+[node name="Launch3" type="Button" parent="CanvasLayer"]
+offset_left = 925.0
+offset_top = 596.0
+offset_right = 1060.0
+offset_bottom = 640.0
+theme = ExtResource("1_gxgo8")
+text = "Launch!"
+
+[node name="BackButton" type="Button" parent="."]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 145.0
+offset_bottom = 52.0
+theme = ExtResource("1_gxgo8")
+text = "<-- Back"
+
+[connection signal="pressed" from="CanvasLayer/Launch1" to="." method="_on_launch_1_pressed"]
+[connection signal="pressed" from="CanvasLayer/Launch2" to="." method="_on_launch_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/Launch3" to="." method="_on_launch_3_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_pressed"]

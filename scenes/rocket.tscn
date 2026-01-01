@@ -183,4 +183,13 @@ offset_right = 418.0
 offset_bottom = 668.0
 scale = Vector2(0.5, 0.5)
 
+[node name="LaunchButton" type="Button" parent="."]
+offset_left = 961.0
+offset_top = 598.0
+offset_right = 1140.0
+offset_bottom = 642.0
+theme = ExtResource("3_agf72")
+text = "Launch -->"
+
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="LaunchButton" to="." method="_on_launch_button_pressed"]

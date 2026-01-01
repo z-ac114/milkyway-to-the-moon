@@ -15,6 +15,7 @@ var diamond: float = 0
 var coin: float = 0.0
 var upgrade_level: int = 0
 var button_e: bool = false
+var rocket_inventory = []
 
 var rocket_levels = {
 	"plating": 0,
