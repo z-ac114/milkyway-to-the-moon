@@ -209,6 +209,12 @@ theme = ExtResource("3_yyhw1")
 theme_override_font_sizes/font_size = 22
 text = "Sell all"
 
+[node name="SellAllDiamond" type="Button" parent="SellAllButtons"]
+layout_mode = 2
+theme = ExtResource("3_yyhw1")
+theme_override_font_sizes/font_size = 22
+text = "Sell all"
+
 [node name="Sell10Buttons" type="VBoxContainer" parent="."]
 offset_left = 193.0
 offset_top = -218.0
@@ -258,6 +264,12 @@ theme = ExtResource("3_yyhw1")
 theme_override_font_sizes/font_size = 22
 text = "Sell 10"
 
+[node name="Sell10Diamond" type="Button" parent="Sell10Buttons"]
+layout_mode = 2
+theme = ExtResource("3_yyhw1")
+theme_override_font_sizes/font_size = 22
+text = "Sell 10"
+
 [node name="RocketBuilding" type="Button" parent="."]
 offset_left = 267.0
 offset_top = 261.0
@@ -266,4 +278,13 @@ offset_bottom = 305.0
 theme = ExtResource("3_yyhw1")
 text = "Build A Rocket -->"
 
+[node name="BackButton" type="Button" parent="."]
+offset_left = -565.0
+offset_top = 192.0
+offset_right = -406.0
+offset_bottom = 236.0
+theme = ExtResource("3_yyhw1")
+text = "<-- Back"
+
 [connection signal="pressed" from="RocketBuilding" to="." method="_on_rocket_building_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

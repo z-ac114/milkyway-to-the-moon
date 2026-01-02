@@ -17,6 +17,7 @@ var sell_rates := {
 @onready var sell_10_zinc: Button = $Sell10Zinc
 @onready var sell_10_emerald: Button = $Sell10Emerald
 @onready var sell_10_lapis: Button = $Sell10Lapis
+@onready var sell_10_diamond: Button = $Sell10Diamond
 
 
 func _ready():
@@ -27,6 +28,7 @@ func _ready():
 	sell_10_zinc.pressed.connect(_sell_10_zinc)
 	sell_10_emerald.pressed.connect(_sell_10_emerald)
 	sell_10_lapis.pressed.connect(_sell_10_lapis)
+	sell_10_diamond.pressed.connect(_sell_10_diamond)
 
 
 func _sell_10_rock():
@@ -63,3 +65,8 @@ func _sell_10_lapis():
 	if Global.lapis > 10:
 		Global.coin += 10 * sell_rates["lapis"]
 		Global.lapis -= 10
+
+func _sell_10_diamond():
+	if Global.diamond > 10:
+		Global.coin += 10 * sell_rates["diamond"]
+		Global.diamond -= 10

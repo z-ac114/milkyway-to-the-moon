@@ -7,7 +7,8 @@ var sell_rates := {
 	"gold": 10.0,
 	"zinc": 15.0,
 	"emerald": 25.0,
-	"lapis": 30.0
+	"lapis": 30.0,
+	"diamond": 75.0
 }
 
 @onready var sell_all_rock: Button = $SellAllRock
@@ -17,6 +18,7 @@ var sell_rates := {
 @onready var sell_all_zinc: Button = $SellAllZinc
 @onready var sell_all_emerald: Button = $SellAllEmerald
 @onready var sell_all_lapis: Button = $SellAllLapis
+@onready var sell_all_diamond: Button = $SellAllDiamond
 
 func _ready():
 	sell_all_rock.pressed.connect(_sell_all_rock)
@@ -26,6 +28,7 @@ func _ready():
 	sell_all_zinc.pressed.connect(_sell_all_zinc)
 	sell_all_emerald.pressed.connect(_sell_all_emerald)
 	sell_all_lapis.pressed.connect(_sell_all_lapis)
+	sell_all_diamond.pressed.connect(_sell_all_diamond)
 
 
 func _sell_all_rock():
@@ -55,3 +58,7 @@ func _sell_all_emerald():
 func _sell_all_lapis():
 	Global.coin += Global.lapis * sell_rates["lapis"]
 	Global.lapis = 0
+
+func _sell_all_diamond():
+	Global.coin += Global.diamond * sell_rates["diamond"]
+	Global.diamond = 0

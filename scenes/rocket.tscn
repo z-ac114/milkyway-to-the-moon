@@ -167,12 +167,21 @@ scale = Vector2(0.5, 0.5)
 
 [node name="Rocket" type="TextureRect" parent="."]
 texture_filter = 1
+offset_left = 60.0
+offset_top = 150.0
+offset_right = 714.0
+offset_bottom = 804.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_g6bar")
+stretch_mode = 5
+
+[node name="Rocket2" type="TextureRect" parent="."]
+texture_filter = 1
 offset_left = 200.0
 offset_top = 300.0
 offset_right = 418.0
 offset_bottom = 518.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("7_g6bar")
 stretch_mode = 5
 
 [node name="TopCone1" type="TextureRect" parent="."]

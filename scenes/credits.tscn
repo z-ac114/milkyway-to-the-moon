@@ -33,7 +33,24 @@ grow_vertical = 2
 theme = ExtResource("2_0ctdu")
 text = "Code : Me
 Art : Me
-Emotional Support : All the wonderful people on HC Slack!"
+Emotional Support : everyone inside my basement!
+"
+
+[node name="Awesome Button" type="Button" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -144.0
+offset_top = -130.0
+offset_right = 153.0
+offset_bottom = -74.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_0ctdu")
+theme_override_font_sizes/font_size = 40
+text = "Funny Button"
 
 [node name="Button" type="Button" parent="CanvasLayer"]
 anchors_preset = 7
@@ -50,4 +67,5 @@ theme = ExtResource("2_0ctdu")
 theme_override_font_sizes/font_size = 40
 text = "Back"
 
+[connection signal="pressed" from="CanvasLayer/Awesome Button" to="." method="_on_awesome_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

@@ -5,8 +5,8 @@ var current_interval: float
 var cps: float = 0.0
 var rocktier: String = "rock"
 var rock: float = 0
-var copper: float = 10000
-var iron: float = 10000
+var copper: float = 0
+var iron: float = 0
 var gold: float = 0
 var zinc: float = 0
 var emerald: float = 0
@@ -16,6 +16,9 @@ var coin: float = 0.0
 var upgrade_level: int = 0
 var button_e: bool = false
 var rocket_inventory = []
+var music_volume_db: float = 0.0
+var music_muted: bool = false  
+var play_bgm :bool = false
 
 var rocket_levels = {
 	"plating": 0,

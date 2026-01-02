@@ -18,6 +18,7 @@ extends Node2D
 @onready var tank_2: TextureRect = $Tank2
 @onready var top_cone_1: TextureRect = $TopCone1
 @onready var rocket: TextureRect = $Rocket
+@onready var rocket_2: TextureRect = $Rocket2
 
 var rocket_parts = {
 	"plating": {"costs":[{"copper":10},{"iron":15,"copper":10},{"gold":20,"iron":15},{"zinc":25,"gold":20},{"emerald":30,"zinc":25},{"lapis":35,"emerald":30},{"diamond":40,"lapis":35}]},
@@ -86,7 +87,13 @@ var rocket_textures = [
 	preload("res://assets/steelrocket.png"),
 	preload("res://assets/copperrocket.png"),
 	preload("res://assets/ironrocket.png"),
+	preload("res://assets/goldrocket.png"),
+	preload("res://assets/zincrocket.png"),
+	preload("res://assets/emeraldrocket.png"),
+	preload("res://assets/lapisrocket.png"),
+	preload("res://assets/diamondrocket.png")
 ]
+
 
 var original_positions := {}
 
@@ -112,9 +119,11 @@ func _update_textures():
 
 func _on_back_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/s1.tscn")
+	_finish_crafting()
 	
 func _on_launch_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/rocketlaunch.tscn")
+	_finish_crafting()
 
 func _on_upgrade_plating_pressed() -> void: upgrade_part("plating")
 func _on_upgrade_engine_pressed() -> void: upgrade_part("engine")
@@ -180,7 +189,7 @@ func start_crafting_animation():
 	for p in parts:
 		original_positions[p] = p.global_position
 
-	var center = rocket.global_position
+	var center = rocket_2.global_position
 	var delay_step = 0.2
 	var start_radius = 150.0
 	var duration = 2.0
@@ -194,8 +203,7 @@ func start_crafting_animation():
 			func(new_radius):
 				var spin_angle = angle + (Time.get_ticks_msec() / 200.0)
 				var pos = center + Vector2(cos(spin_angle), sin(spin_angle)) * new_radius
-				part.global_position = pos, start_radius, 0.0, duration
-		).set_delay(i * delay_step)
+				part.global_position = pos, start_radius, 0.0, duration).set_delay(i * delay_step)
 
 		tween.tween_callback(Callable(self, "_on_part_animation_finished").bind(part)).set_delay(i * delay_step + duration)
 
@@ -221,3 +229,15 @@ func _on_part_animation_finished(part: TextureRect):
 			p.modulate.a = 1.0
 		original_positions.clear()
 		craft_button.disabled = false
+
+func _finish_crafting():
+	rocket.visible = false
+	for part_name in rocket_parts.keys():
+		Global.rocket_levels[part_name] = 0
+	_update_textures()
+	for p in original_positions.keys():
+		p.global_position = original_positions[p]
+		p.visible = true
+		p.modulate.a = 1.0
+	original_positions.clear()
+	craft_button.disabled = false

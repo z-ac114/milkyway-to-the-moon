@@ -12,6 +12,11 @@ var rocket_textures = [
 	preload("res://assets/steelrocket.png"),
 	preload("res://assets/copperrocket.png"),
 	preload("res://assets/ironrocket.png"),
+	preload("res://assets/goldrocket.png"),
+	preload("res://assets/zincrocket.png"),
+	preload("res://assets/emeraldrocket.png"),
+	preload("res://assets/lapisrocket.png"),
+	preload("res://assets/diamondrocket.png")
 ]
 
 var showing_indices = [0, 1, 2]
@@ -49,15 +54,38 @@ func launch_rocket(slot_index: int):
 	var inventory_index = showing_indices[slot_index]
 	
 	if inventory_index < Global.rocket_inventory.size():
-		Global.rocket_inventory.remove_at(inventory_index)
+		var rocket_slot = [slot1, slot2, slot3][slot_index]
+		var rocket_level = Global.rocket_inventory[inventory_index]
 		
-		showing_indices.clear()
-		for i in range(3):
-			showing_indices.append(i)
+		print("Launching rocket level " + str(rocket_level) + "!")
 		
-		update_slots()
+		animate_launch(rocket_slot, inventory_index)
 	else:
 		print("No rocket!")
+
+func animate_launch(rocket_slot: TextureRect, inventory_index: int):
+	var original_position = rocket_slot.position
+	var tween = create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(rocket_slot, "position:y", rocket_slot.position.y - 500, 1.5).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(rocket_slot, "modulate:a",0.0,1.2)
+	await tween.finished
+	Global.rocket_inventory.remove_at(inventory_index)
+	rocket_slot.position = original_position
+	rocket_slot.scale = Vector2(1, 1)
+	rocket_slot.modulate.a = 1.0
+	showing_indices.clear()
+	var next_index = 0
+	for i in range(3):
+		while next_index < Global.rocket_inventory.size() and next_index in showing_indices:
+			next_index += 1
+		if next_index < Global.rocket_inventory.size():
+			showing_indices.append(next_index)
+			next_index += 1
+		else:
+			showing_indices.append(Global.rocket_inventory.size()) 
+	
+	update_slots()
 
 func _on_back_pressed():
 	get_tree().change_scene_to_file("res://scenes/s1.tscn")
