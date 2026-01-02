@@ -36,7 +36,7 @@ func _on_music_mute_toggled(pressed: bool) -> void:
 
 func slider_to_db(value: float) -> float:
 	if value <= 0:
-		return -80.0
+		return -60.0
 	return lerp(-60.0, 30.0, value / 100.0)
 
 func db_to_slider(db_value: float) -> float:

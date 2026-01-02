@@ -133,6 +133,7 @@ autoplay = "default"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_lpvoh")
 volume_db = -20.0
+bus = &"Music"
 
 [connection signal="pressed" from="Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="QuitGame" to="." method="_on_quit_game_pressed"]
