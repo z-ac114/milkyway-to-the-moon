@@ -19,6 +19,8 @@ var rocket_inventory = []
 var music_volume_db: float = 0.0
 var music_muted: bool = false  
 var play_bgm :bool = false
+var planets: float = 0
+signal play_jupiter
 
 var rocket_levels = {
 	"plating": 0,
