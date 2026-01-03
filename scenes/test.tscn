@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://c6jj2rm808kj3"]
+[gd_scene load_steps=11 format=3 uid="uid://c6jj2rm808kj3"]
 
 [ext_resource type="Script" uid="uid://x8rxq3u0py1u" path="res://scripts/test.gd" id="1_errlg"]
 [ext_resource type="Theme" uid="uid://c0es2kte6qmmp" path="res://scripts/normal.tres" id="2_74lek"]
 [ext_resource type="Texture2D" uid="uid://dnqp4dxm31k8i" path="res://assets/sprites/game_studio.png" id="2_iyx0m"]
 [ext_resource type="Texture2D" uid="uid://dhd4jtxdr5hpo" path="res://assets/sprites/kuro/base/idle.png" id="5_j5jx5"]
 [ext_resource type="AudioStream" uid="uid://b4y8xnsasyft" path="res://audio/odyssey.mp3" id="5_lpvoh"]
+[ext_resource type="Texture2D" uid="uid://c5wi0p73vu3qy" path="res://assets/space4.jpg" id="6_lpvoh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lpvoh"]
 atlas = ExtResource("5_j5jx5")
@@ -68,11 +69,24 @@ offset_top = -26.0
 offset_right = 803.0
 offset_bottom = 119.0
 theme = ExtResource("2_74lek")
-theme_override_colors/font_color = Color(0.7529412, 0.7529412, 0.7529412, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.53333336, 0.27450982, 0.5372549, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 70
 text = "To the moon..?"
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 166.0
+offset_right = 809.0
+offset_bottom = 311.0
+theme = ExtResource("2_74lek")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.61554945, 0.27788562, 3.85046e-07, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 50
+text = "Also.. Happy 2026!"
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="."]
@@ -81,26 +95,12 @@ offset_top = 69.0
 offset_right = 811.0
 offset_bottom = 214.0
 theme = ExtResource("2_74lek")
-theme_override_colors/font_color = Color(0.7529412, 0.7529412, 0.7529412, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0.53333336, 0.27450982, 0.5372549, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 40
 text = "- a sequel of Climb the Clouds...
 Kuro is back...?"
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="Label2"]
-layout_mode = 0
-offset_left = -2.0
-offset_top = 97.0
-offset_right = 791.0
-offset_bottom = 242.0
-theme = ExtResource("2_74lek")
-theme_override_colors/font_color = Color(0.7654531, 0.747851, 0.7538602, 1)
-theme_override_colors/font_outline_color = Color(0.61554945, 0.27788562, 3.85046e-07, 1)
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 50
-text = "Also.. Happy 2026!"
 vertical_alignment = 1
 
 [node name="Settings" type="Button" parent="."]
@@ -129,11 +129,25 @@ position = Vector2(885, 210)
 scale = Vector2(16.875, 16.875)
 sprite_frames = SubResource("SpriteFrames_uacia")
 autoplay = "default"
+frame_progress = 0.53343856
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_lpvoh")
 volume_db = -20.0
 bus = &"Music"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+z_index = -100
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_lpvoh")
+expand_mode = 1
 
 [connection signal="pressed" from="Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="QuitGame" to="." method="_on_quit_game_pressed"]
