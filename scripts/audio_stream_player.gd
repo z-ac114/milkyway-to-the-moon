@@ -22,26 +22,29 @@ func _process(_delta: float) -> void:
 
 func _on_play_galaxy() -> void:
 	var music_bus = AudioServer.get_bus_index("Music")
-	_switch_and_play("res://audio/space fantasy.mp3", Global.music_volume_db-5)
+	_switch_and_play("res://audio/space fantasy.mp3", Global.music_volume_db-5, false)
 
 func _on_play_odyssey() -> void:
 	var music_bus = AudioServer.get_bus_index("Music")
-	_switch_and_play("res://audio/odyssey.mp3", Global.music_volume_db-20)
+	_switch_and_play("res://audio/odyssey.mp3", Global.music_volume_db-20, true)
 	
 func _on_play_earth() -> void:
 	var music_bus = AudioServer.get_bus_index("Music")
-	_switch_and_play("res://audio/earth.mp3", Global.music_volume_db)
+	_switch_and_play("res://audio/earth.mp3", Global.music_volume_db, false)
 	
 func _on_play_mercury() -> void:
 	var music_bus = AudioServer.get_bus_index("Music")
-	_switch_and_play("res://audio/mercury.mp3", Global.music_volume_db)
+	_switch_and_play("res://audio/mercury.mp3", Global.music_volume_db, false)
 
-func _switch_and_play(new_path: String, target_db: float) -> void:
+func _switch_and_play(new_path: String, target_db: float, is_odyseey: bool) -> void:
 	if stream:
 		playback_positions[current_track_path] = get_playback_position()
 	current_track_path = new_path
 	stream = load(new_path)
-	self.volume_db = -40.0
+	if not is_odyseey:
+		self.volume_db = -40.0
+	else:
+		self.volume_db = Global.music_volume_db-20
 	var resume_time = playback_positions.get(new_path, 0.0)
 	play(resume_time)
 	var tween = create_tween()
@@ -50,4 +53,4 @@ func _switch_and_play(new_path: String, target_db: float) -> void:
 func play_earth_from_start() -> void:
 	var path = "res://audio/earth.mp3"
 	playback_positions[path] = 0.0
-	_switch_and_play(path, Global.music_volume_db)
+	_switch_and_play(path, Global.music_volume_db, false)
