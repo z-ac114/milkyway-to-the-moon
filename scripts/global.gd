@@ -27,7 +27,12 @@ var jupiter_unlocked: bool = false
 var saturn_unlocked: bool = false
 var uranus_unlocked: bool = false
 var neptune_unlocked: bool = false
-signal play_jupiter
+var odyssey_played: bool = false
+signal earth_0
+signal bgm_galaxy
+signal bgm_odyssey
+signal bgm_earth
+signal bgm_mercury
 
 var rocket_levels = {
 	"plating": 0,

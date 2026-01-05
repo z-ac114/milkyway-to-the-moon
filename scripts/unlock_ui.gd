@@ -8,7 +8,6 @@ func _ready():
 	$Message.self_modulate = text_color
 	get_tree().paused = true
 	$Anim.play("ShowUnlock")
-
 func _on_anim_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "ShowUnlock":
 		get_tree().paused = false

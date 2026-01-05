@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://c6jj2rm808kj3"]
+[gd_scene load_steps=10 format=3 uid="uid://c6jj2rm808kj3"]
 
 [ext_resource type="Script" uid="uid://x8rxq3u0py1u" path="res://scripts/test.gd" id="1_errlg"]
 [ext_resource type="Theme" uid="uid://c0es2kte6qmmp" path="res://scripts/normal.tres" id="2_74lek"]
 [ext_resource type="Texture2D" uid="uid://dnqp4dxm31k8i" path="res://assets/sprites/game_studio.png" id="2_iyx0m"]
 [ext_resource type="Texture2D" uid="uid://dhd4jtxdr5hpo" path="res://assets/sprites/kuro/base/idle.png" id="5_j5jx5"]
-[ext_resource type="AudioStream" uid="uid://b4y8xnsasyft" path="res://audio/odyssey.mp3" id="5_lpvoh"]
 [ext_resource type="Texture2D" uid="uid://c5wi0p73vu3qy" path="res://assets/space4.jpg" id="6_lpvoh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lpvoh"]
@@ -132,7 +131,6 @@ autoplay = "default"
 frame_progress = 0.53343856
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_lpvoh")
 volume_db = -20.0
 bus = &"Music"
 

@@ -58,7 +58,8 @@ func launch_rocket(slot_index: int):
 	if inventory_index < Global.rocket_inventory.size():
 		var rocket_slot = [slot1, slot2, slot3][slot_index]
 		var rocket_level = Global.rocket_inventory[inventory_index]
-
+		print("Launching rocket level " + str(rocket_level) + "!")
+		animate_launch(rocket_slot, inventory_index)
 		var delay = 0.0
 
 		if rocket_level >= 1 and Global.mercury_unlocked == false:
@@ -95,9 +96,6 @@ func launch_rocket(slot_index: int):
 			Global.neptune_unlocked = true
 			spawn_unlock_ui("Neptune",Color("3f5efb"), delay)
 			delay += 0.5
-
-		print("Launching rocket level " + str(rocket_level) + "!")
-		animate_launch(rocket_slot, inventory_index)
 	else:
 		print("No rocket!")
 
