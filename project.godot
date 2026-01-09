@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Global="*res://scripts/global.gd"
 Bgm="*res://scenes/bgm.tscn"
+Sfxmanager="*res://scripts/sfxmanager.gd"
 
 [editor_plugins]
 

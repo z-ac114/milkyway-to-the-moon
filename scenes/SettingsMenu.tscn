@@ -1,9 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0cucocvpdngt"]
+[gd_scene load_steps=8 format=3 uid="uid://b0cucocvpdngt"]
 
 [ext_resource type="Script" uid="uid://blnp740drohx8" path="res://scripts/settings_menu.gd" id="1_dd8lr"]
 [ext_resource type="Theme" uid="uid://c0es2kte6qmmp" path="res://scripts/normal.tres" id="1_yelko"]
 [ext_resource type="AudioStream" uid="uid://63b6p0pjviaj" path="res://audio/earth.mp3" id="3_dd8lr"]
+[ext_resource type="Texture2D" uid="uid://dh6aixsdlfsbm" path="res://assets/Checkbox.png" id="3_fl0th"]
+[ext_resource type="Texture2D" uid="uid://cu05aej15qj1a" path="res://assets/box.png" id="4_nuakw"]
 [ext_resource type="Texture2D" uid="uid://c5wi0p73vu3qy" path="res://assets/space4.jpg" id="4_t7ar5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fl0th"]
+bg_color = Color(0.9429552, 0.6978395, 0.57069415, 0.22745098)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
@@ -66,11 +75,15 @@ theme_override_font_sizes/font_size = 25
 text = "Mute Music:"
 
 [node name="MuteCheck" type="CheckBox" parent="."]
+z_index = 4
 layout_mode = 0
-offset_left = 512.0
-offset_top = 362.0
-offset_right = 536.0
-offset_bottom = 404.0
+offset_left = 491.0
+offset_top = 349.0
+offset_right = 539.0
+offset_bottom = 405.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_fl0th")
+theme_override_icons/checked = ExtResource("3_fl0th")
+theme_override_icons/unchecked = ExtResource("4_nuakw")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_dd8lr")

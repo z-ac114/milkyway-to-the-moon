@@ -8,6 +8,7 @@ func _ready() -> void:
 	Global.emit_signal("bgm_odyssey")
 	
 func _on_button_pressed() -> void:
+	Sfxmanager.play_button_click()
 	Global.play_bgm = true
 	get_tree().change_scene_to_file("res://scenes/tutorial.tscn")
 	
@@ -16,11 +17,13 @@ func _on_quit_game_pressed() -> void:
 
 
 func _on_credits_pressed() -> void:
+	Sfxmanager.play_button_click()
 	Global.play_bgm = true
 	get_tree().change_scene_to_file("res://scenes/credits.tscn")
 
 
 func _on_settings_pressed() -> void:
+	Sfxmanager.play_button_click()
 	Global.emit_signal("bgm_earth")
 	Global.play_bgm = true
 	get_tree().change_scene_to_file("res://scenes/SettingsMenu.tscn")

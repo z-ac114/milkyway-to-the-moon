@@ -38,26 +38,6 @@ animations = [{
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_errlg")
 
-[node name="Credits" type="Button" parent="."]
-offset_left = 652.0
-offset_top = 470.0
-offset_right = 1002.0
-offset_bottom = 530.0
-theme = ExtResource("2_74lek")
-theme_override_font_sizes/font_size = 40
-text = "Credits
-"
-
-[node name="QuitGame" type="Button" parent="."]
-offset_left = 652.0
-offset_top = 540.0
-offset_right = 1002.0
-offset_bottom = 600.0
-theme = ExtResource("2_74lek")
-theme_override_font_sizes/font_size = 40
-text = "Exit Game
-"
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(128, 520)
 texture = ExtResource("2_iyx0m")
@@ -101,6 +81,26 @@ theme_override_font_sizes/font_size = 40
 text = "- a sequel of Climb the Clouds...
 Kuro is back...?"
 vertical_alignment = 1
+
+[node name="Credits" type="Button" parent="."]
+offset_left = 652.0
+offset_top = 470.0
+offset_right = 1002.0
+offset_bottom = 530.0
+theme = ExtResource("2_74lek")
+theme_override_font_sizes/font_size = 40
+text = "Credits
+"
+
+[node name="QuitGame" type="Button" parent="."]
+offset_left = 652.0
+offset_top = 540.0
+offset_right = 1002.0
+offset_bottom = 600.0
+theme = ExtResource("2_74lek")
+theme_override_font_sizes/font_size = 40
+text = "Exit Game
+"
 
 [node name="Settings" type="Button" parent="."]
 offset_left = 300.0
