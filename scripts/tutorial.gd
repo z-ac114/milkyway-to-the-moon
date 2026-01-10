@@ -89,6 +89,7 @@ func _hide_continue_prompt():
 		blink_tween.kill()
 
 func _end_dialogue():
+	Global.tutorial_finished = true
 	overlay.visible = false
 	panel.visible = false
 	_hide_continue_prompt()

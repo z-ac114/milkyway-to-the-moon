@@ -96,10 +96,12 @@ func animate_launch(rocket_slot: TextureRect, inventory_index: int):
 	_show_unlocks(rocket_level)
 
 func _on_back_pressed():
+	Sfxmanager.play_button_click()
 	get_tree().change_scene_to_file("res://scenes/s1.tscn")
 
 
 func _on_map_button_pressed() -> void:
+	Sfxmanager.play_button_click()
 	get_tree().change_scene_to_file("res://scenes/planetselection.tscn")
 
 func _show_unlocks(rocket_level: int):

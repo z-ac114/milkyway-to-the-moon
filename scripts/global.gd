@@ -18,7 +18,7 @@ var button_e: bool = false
 var rocket_inventory = []
 var music_volume_db: float = -10.0
 var music_muted: bool = false  
-var sfx_volume_db: float = -20.0
+var sfx_volume_db: float = -30.0
 var sfx_muted: bool = false  
 var play_bgm :bool = false
 var planets: float = 0
@@ -30,6 +30,7 @@ var saturn_unlocked: bool = false
 var uranus_unlocked: bool = false
 var neptune_unlocked: bool = false
 var odyssey_played: bool = false
+var tutorial_finished: bool = false
 signal earth_0
 signal bgm_galaxy
 signal bgm_odyssey
