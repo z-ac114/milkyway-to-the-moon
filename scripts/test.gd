@@ -27,6 +27,6 @@ func _on_credits_pressed() -> void:
 
 func _on_settings_pressed() -> void:
 	Sfxmanager.play_button_click()
-	Global.emit_signal("bgm_earth")
+	Global.emit_signal("main_theme")
 	Global.play_bgm = true
 	get_tree().change_scene_to_file("res://scenes/SettingsMenu.tscn")

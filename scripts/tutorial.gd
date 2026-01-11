@@ -4,11 +4,19 @@ extends Node2D
 @onready var panel: Panel = $CanvasLayer/Panel
 @onready var text_label: Label = $CanvasLayer/Panel/Label
 @onready var continue_label: Label = $CanvasLayer/Panel/ContinueLabel
+@onready var earth: TextureRect = $CanvasLayer/Earth
+@onready var venus: TextureRect = $CanvasLayer/Venus
+@onready var mercury: TextureRect = $CanvasLayer/Mercury
+@onready var jupiter: TextureRect = $CanvasLayer/Jupiter
+@onready var mars: TextureRect = $CanvasLayer/Mars
 
 var dialogue_lines = [
 	"Welcome to the game!",
-	"This is a test tutorial.",
+	"I am Kuro.",
+	"I am trying to get to space!",
+	"Before the game starts, this is a tutorial part to make sure \nyou know how to play!",
 	"You can press the space bar to skip the typing or go to the next line.",
+	"This game is a space-themed clicker game!",
 	"The tutorial is now ending."
 ]
 
@@ -23,6 +31,11 @@ func _ready() -> void:
 	panel.visible = false
 	text_label.text = ""
 	continue_label.visible = false
+	earth.visible = false
+	venus.visible = false
+	mercury.visible = false
+	mars.visible = false
+	jupiter.visible = false
 	
 	start_dialogue()
 
@@ -47,6 +60,19 @@ func _show_line():
 		
 	else:
 		_end_dialogue()
+	if current_line == 7:
+		earth.visible = true
+		venus.visible = true
+		mercury.visible = true
+		mars.visible = true
+		jupiter.visible = true
+	elif current_line == 8:
+		earth.visible = false
+		venus.visible = false
+		mercury.visible = false
+		mars.visible = false
+		jupiter.visible = false
+	
 
 func _type_text(line: String) -> void:
 	if line.is_empty():
@@ -93,5 +119,5 @@ func _end_dialogue():
 	overlay.visible = false
 	panel.visible = false
 	_hide_continue_prompt()
-	Global.emit_signal("earth_0")
+	Global.emit_signal("main_theme")
 	get_tree().change_scene_to_file("res://scenes/s1.tscn")

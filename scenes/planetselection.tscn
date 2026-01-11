@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2goh8olskhrq"]
+[gd_scene load_steps=9 format=3 uid="uid://d2goh8olskhrq"]
 
 [ext_resource type="Script" uid="uid://dwtlugqudj3w2" path="res://scripts/planetselection.gd" id="1_285wn"]
 [ext_resource type="Theme" uid="uid://c0es2kte6qmmp" path="res://scripts/normal.tres" id="2_ge70v"]
 [ext_resource type="Texture2D" uid="uid://b18lot253t7t" path="res://assets/mercury.png" id="3_1mlip"]
 [ext_resource type="Texture2D" uid="uid://c5lvpi8miefhy" path="res://assets/venus.png" id="4_mg2wx"]
 [ext_resource type="Texture2D" uid="uid://bctijft1myqba" path="res://assets/earth.png" id="5_ohtkm"]
+[ext_resource type="Texture2D" uid="uid://b6c5b7j3halft" path="res://assets/mars.png" id="6_8pemr"]
 [ext_resource type="Texture2D" uid="uid://r3a3lvr8h25f" path="res://assets/space3.jpg" id="6_mg2wx"]
+[ext_resource type="Texture2D" uid="uid://dowhecs3gsd0n" path="res://assets/jupiter.png" id="7_sef4j"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_285wn")
@@ -64,9 +66,27 @@ stretch_mode = 5
 texture_filter = 1
 offset_left = 264.0
 offset_top = 269.0
-offset_right = 530.0
-offset_bottom = 535.0
+offset_right = 461.0
+offset_bottom = 466.0
 texture_normal = ExtResource("5_ohtkm")
+stretch_mode = 5
+
+[node name="Mars" type="TextureButton" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 455.0
+offset_top = 160.0
+offset_right = 576.0
+offset_bottom = 281.0
+texture_normal = ExtResource("6_8pemr")
+stretch_mode = 5
+
+[node name="Jupiter" type="TextureButton" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 584.0
+offset_top = 257.0
+offset_right = 842.0
+offset_bottom = 515.0
+texture_normal = ExtResource("7_sef4j")
 stretch_mode = 5
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
@@ -81,16 +101,9 @@ grow_vertical = 2
 texture = ExtResource("6_mg2wx")
 expand_mode = 3
 
-[node name="Label3" type="Label" parent="."]
-offset_left = 311.0
-offset_top = 364.0
-offset_right = 571.0
-offset_bottom = 451.0
-theme = ExtResource("2_ge70v")
-theme_override_font_sizes/font_size = 25
-text = "Mute Music:"
-
 [connection signal="pressed" from="CanvasLayer/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Mercury" to="." method="_on_mercury_pressed"]
 [connection signal="pressed" from="CanvasLayer/Venus" to="." method="_on_venus_pressed"]
 [connection signal="pressed" from="CanvasLayer/Earth" to="." method="_on_earth_pressed"]
+[connection signal="pressed" from="CanvasLayer/Mars" to="." method="_on_mars_pressed"]
+[connection signal="pressed" from="CanvasLayer/Jupiter" to="." method="_on_jupiter_pressed"]

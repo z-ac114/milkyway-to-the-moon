@@ -48,24 +48,11 @@ offset_top = -26.0
 offset_right = 803.0
 offset_bottom = 119.0
 theme = ExtResource("2_74lek")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.65834004, 0.6583399, 0.6583399, 1)
 theme_override_colors/font_outline_color = Color(0.53333336, 0.27450982, 0.5372549, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 70
 text = "To the moon..?"
-vertical_alignment = 1
-
-[node name="Label3" type="Label" parent="."]
-offset_left = 16.0
-offset_top = 166.0
-offset_right = 809.0
-offset_bottom = 311.0
-theme = ExtResource("2_74lek")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0.61554945, 0.27788562, 3.85046e-07, 1)
-theme_override_constants/outline_size = 10
-theme_override_font_sizes/font_size = 50
-text = "Also.. Happy 2026!"
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="."]
@@ -74,7 +61,7 @@ offset_top = 69.0
 offset_right = 811.0
 offset_bottom = 214.0
 theme = ExtResource("2_74lek")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.65834004, 0.6583399, 0.6583399, 1)
 theme_override_colors/font_outline_color = Color(0.53333336, 0.27450982, 0.5372549, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 40

@@ -11,9 +11,11 @@ func _ready() -> void:
 	Global.connect("bgm_galaxy", Callable(self, "_on_play_galaxy"))
 	Global.connect("bgm_odyssey", Callable(self, "_on_play_odyssey"))
 	Global.connect("bgm_earth", Callable(self, "_on_play_earth"))
+	Global.connect("bgm_mars", Callable(self, "_on_play_mars"))
+	Global.connect("bgm_jupiter", Callable(self, "_on_play_jupiter"))
+	Global.connect("main_theme", Callable(self, "_on_play_main_theme"))
 	Global.connect("bgm_mercury", Callable(self, "_on_play_mercury"))
 	Global.connect("bgm_venus", Callable(self, "_on_play_venus"))
-	Global.connect("earth_0", Callable(self, "play_earth_from_start"))
 	
 func _process(_delta: float) -> void:
 	if not Global.play_bgm and playing:
@@ -29,9 +31,13 @@ func _on_play_odyssey() -> void:
 	var music_bus = AudioServer.get_bus_index("Music")
 	_switch_and_play("res://audio/prologue.mp3", Global.music_volume_db, true)
 	
-func _on_play_earth() -> void:
+func _on_play_main_theme() -> void:
 	var music_bus = AudioServer.get_bus_index("Music")
 	_switch_and_play("res://audio/g2w4.mp3", Global.music_volume_db-10, false)
+	
+func _on_play_earth() -> void:
+	var music_bus = AudioServer.get_bus_index("Music")
+	_switch_and_play("res://audio/earth.mp3", Global.music_volume_db-10, false)
 	
 func _on_play_mercury() -> void:
 	var music_bus = AudioServer.get_bus_index("Music")
@@ -40,6 +46,14 @@ func _on_play_mercury() -> void:
 func _on_play_venus() -> void:
 	var music_bus = AudioServer.get_bus_index("Music")
 	_switch_and_play("res://audio/venus.mp3", Global.music_volume_db+20, false)
+	
+func _on_play_mars() -> void:
+	var music_bus = AudioServer.get_bus_index("Music")
+	_switch_and_play("res://audio/mars.mp3", Global.music_volume_db, false)
+	
+func _on_play_jupiter() -> void:
+	var music_bus = AudioServer.get_bus_index("Music")
+	_switch_and_play("res://audio/jupiter.mp3", Global.music_volume_db, false)
 
 func _switch_and_play(new_path: String, target_db: float, is_odyseey: bool) -> void:
 	if stream:
@@ -54,9 +68,3 @@ func _switch_and_play(new_path: String, target_db: float, is_odyseey: bool) -> v
 	play(resume_time)
 	var tween = create_tween()
 	tween.tween_property(self, "volume_db", target_db, 1.5).set_trans(Tween.TRANS_SINE)
-
-func play_earth_from_start() -> void:
-	Global.music_volume_db -= 10.0
-	var path = "res://audio/g2w4.mp3"
-	playback_positions[path] = 0.0
-	_switch_and_play(path, Global.music_volume_db, false)

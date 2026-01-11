@@ -31,12 +31,14 @@ var uranus_unlocked: bool = false
 var neptune_unlocked: bool = false
 var odyssey_played: bool = false
 var tutorial_finished: bool = false
-signal earth_0
 signal bgm_galaxy
 signal bgm_odyssey
 signal bgm_earth
 signal bgm_mercury
 signal bgm_venus
+signal bgm_mars
+signal bgm_jupiter
+signal main_theme
 signal advancement_unlocked(title, description)
 
 var rocket_levels = {

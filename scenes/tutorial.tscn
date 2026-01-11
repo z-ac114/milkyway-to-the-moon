@@ -1,9 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://c4c1f8uqmcord"]
+[gd_scene load_steps=14 format=3 uid="uid://c4c1f8uqmcord"]
 
 [ext_resource type="Script" uid="uid://8fnnt8pc7jnq" path="res://scripts/tutorial.gd" id="1_c13y7"]
 [ext_resource type="Texture2D" uid="uid://c5wi0p73vu3qy" path="res://assets/space4.jpg" id="2_ph3nu"]
 [ext_resource type="Theme" uid="uid://c0es2kte6qmmp" path="res://scripts/normal.tres" id="3_4kmhl"]
 [ext_resource type="Texture2D" uid="uid://dhd4jtxdr5hpo" path="res://assets/sprites/kuro/base/idle.png" id="3_cq4me"]
+[ext_resource type="Texture2D" uid="uid://bctijft1myqba" path="res://assets/earth.png" id="5_ckvwl"]
+[ext_resource type="Texture2D" uid="uid://c5lvpi8miefhy" path="res://assets/venus.png" id="6_nlqja"]
+[ext_resource type="Texture2D" uid="uid://b18lot253t7t" path="res://assets/mercury.png" id="7_0epgs"]
+[ext_resource type="Texture2D" uid="uid://b6c5b7j3halft" path="res://assets/mars.png" id="8_g2equ"]
+[ext_resource type="Texture2D" uid="uid://dowhecs3gsd0n" path="res://assets/jupiter.png" id="8_nlqja"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lpvoh"]
 atlas = ExtResource("3_cq4me")
@@ -82,3 +87,43 @@ theme_override_font_sizes/font_size = 25
 text = "Press Space to continue"
 horizontal_alignment = 2
 vertical_alignment = 1
+
+[node name="Earth" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 176.0
+offset_top = 225.0
+offset_right = 324.0
+offset_bottom = 373.0
+texture = ExtResource("5_ckvwl")
+
+[node name="Venus" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 313.0
+offset_top = 101.0
+offset_right = 420.0
+offset_bottom = 208.0
+texture = ExtResource("6_nlqja")
+
+[node name="Mercury" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 456.0
+offset_top = 55.0
+offset_right = 526.0
+offset_bottom = 125.0
+texture = ExtResource("7_0epgs")
+
+[node name="Jupiter" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 736.0
+offset_top = 117.0
+offset_right = 945.0
+offset_bottom = 326.0
+texture = ExtResource("8_nlqja")
+
+[node name="Mars" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 592.0
+offset_top = 115.0
+offset_right = 684.0
+offset_bottom = 207.0
+texture = ExtResource("8_g2equ")

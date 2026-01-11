@@ -21,10 +21,27 @@ func _on_mercury_pressed() -> void:
 
 
 func _on_venus_pressed() -> void:
-	if Global.mercury_unlocked:
+	if Global.venus_unlocked:
 		Global.emit_signal("bgm_venus")
 	else:
 		pass 
 
 func _on_earth_pressed() -> void:
-	pass
+	if Global.earth_unlocked:
+		Global.emit_signal("bgm_earth")
+	else:
+		pass 
+
+
+func _on_mars_pressed() -> void:
+	if Global.mars_unlocked:
+		Global.emit_signal("bgm_mars")
+	else:
+		pass 
+
+
+func _on_jupiter_pressed() -> void:
+	if Global.jupiter_unlocked:
+		Global.emit_signal("bgm_jupiter")
+	else:
+		pass 
