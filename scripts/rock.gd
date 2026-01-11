@@ -46,19 +46,8 @@ func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed:
 		cts += 1
 		Global._rock_1click()
-		if Global.rock > 100000000:
-			Global.rock1mult += ((Global.rock-50000000)*0.0011)
-		elif Global.rock > 10000000:
-			Global.rock1mult += ((Global.rock-5000000)*0.001)
-		elif Global.rock > 1000000:
-			Global.rock1mult += ((Global.rock-500000)*0.0009)
-		elif Global.rock > 100000:
-			Global.rock1mult += ((Global.rock-50000)*0.0007)
-		elif Global.rock > 10000:
-			Global.rock1mult += ((Global.rock-5000)*0.0005)
-		elif Global.rock > 1000:
-			Global.rock1mult += ((Global.rock-500)*0.0002)
-		elif Global.rock > 100:
-			Global.rock1mult += ((Global.rock-50)*0.0001)
-		else:
-			Global.rock1mult += ((Global.rock)*0.00005)
+		var exponent = 0.72 
+		var coefficient = 0.01 
+		var growth = pow(max((Global.rock+Global.coin), 1.0), exponent) * coefficient
+		
+		Global.rock1mult += growth

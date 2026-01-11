@@ -37,6 +37,7 @@ signal bgm_odyssey
 signal bgm_earth
 signal bgm_mercury
 signal bgm_venus
+signal advancement_unlocked(title, description)
 
 var rocket_levels = {
 	"plating": 0,
@@ -46,7 +47,14 @@ var rocket_levels = {
 	"tank": 0
 }
 
+var advancements = {
+	"first_rock": {"title": "Stone Age", "desc": "Mine your first rock!", "threshold": 1, "earned": false},
+	"millionaire": {"title": "Rockstar", "desc": "Reach 1,000,000 rocks!", "threshold": 1000000, "earned": false},
+	"e10_collector": {"title": "Galactic Geologist", "desc": "Reach 10,000,000,000 rocks!", "threshold": 10000000000, "earned": false}
+}
+
 func _rock_1click():
+	check_advancements()
 	match rocktier:
 		"rock":
 			rock += randf_range(0.1,1) * rock1mult
@@ -95,20 +103,34 @@ func _rock_1click():
 		_:
 			rock += randf_range(0.1,1) * rock1mult
 
-
-
 func f_n(num: float) -> String:
-	if num >= 1_000_000_000_000_000:
-		return str("%.1f" % (num / 1_000_000_000_000_000)) + "Qd"
-	elif num >= 1_000_000_000_000:
-		return str("%.1f" % (num / 1_000_000_000_000)) + "T"
-	elif num >= 1_000_000_000:
-		return str("%.1f" % (num / 1_000_000_000)) + "B"
-	elif num >= 1_000_000:
-		return str("%.1f" % (num / 1_000_000)) + "M"
-	elif num >= 1_000:
-		return str("%.1f" % (num / 1_000)) + "k"
-	elif num >= 9.99:
-		return str("%.1f" % num)
+	if abs(num) >= 1e15:
+		var exponent = log(abs(num)) / log(10)
+		var base = num / pow(10, floor(exponent))
+		return str(base).pad_decimals(2) + "e" + str(int(floor(exponent)))
+	elif abs(num) >= 1e12:
+		return str(num / 1e12).pad_decimals(1) + "T"
+	elif abs(num) >= 1e9:
+		return str(num / 1e9).pad_decimals(1) + "B"
+	elif abs(num) >= 1e6:
+		return str(num / 1e6).pad_decimals(1) + "M"
+	elif abs(num) >= 1e3:
+		return str(num / 1e3).pad_decimals(1) + "k"
+	elif abs(num) >= 9.99:
+		return str(num).pad_decimals(1)
 	else:
-		return str("%.2f" % num)
+		return str(num).pad_decimals(2)
+
+func start_autoclick_loop():
+	if button_e:
+		await get_tree().create_timer(current_interval).timeout
+		_rock_1click()
+		start_autoclick_loop()
+
+func check_advancements():
+	for key in advancements.keys():
+		var a = advancements[key]
+		if not a.earned and rock >= a.threshold:
+			a.earned = true
+			emit_signal("advancement_unlocked", a.title, a.desc)
+			print("Unlocked: " + a.title)
