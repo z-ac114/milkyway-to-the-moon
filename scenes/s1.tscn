@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://1hpb0hrtgxv"]
+[gd_scene load_steps=22 format=3 uid="uid://1hpb0hrtgxv"]
 
 [ext_resource type="Script" uid="uid://bqr37mll4awmt" path="res://scripts/s_1.gd" id="1_q631x"]
 [ext_resource type="Script" uid="uid://3gre0yewmhtr" path="res://scripts/rock.gd" id="2_3c855"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://yh7qb4w1gpbe" path="res://scripts/autoclick_button.gd" id="8_kky4p"]
 [ext_resource type="Script" uid="uid://ky3pqqw5yu7p" path="res://scripts/time_label.gd" id="9_ny864"]
 [ext_resource type="Script" uid="uid://c736wf7yu4jgo" path="res://scripts/cps_label.gd" id="9_q631x"]
+[ext_resource type="Theme" uid="uid://c1x7ysm5oaomy" path="res://scripts/button2.tres" id="9_ss1hi"]
 [ext_resource type="Script" uid="uid://cletjw730xa57" path="res://scripts/autocps.gd" id="9_xysxj"]
 [ext_resource type="Texture2D" uid="uid://dhd4jtxdr5hpo" path="res://assets/sprites/kuro/base/idle.png" id="10_uutvs"]
 [ext_resource type="Script" uid="uid://q18gtl5tpb8f" path="res://scripts/sell_all_buttons.gd" id="13_nalor"]
@@ -122,7 +123,7 @@ offset_left = 711.0
 offset_top = 480.0
 offset_right = 1088.0
 offset_bottom = 529.0
-theme = ExtResource("3_yyhw1")
+theme = ExtResource("9_ss1hi")
 text = "Auto Mine (1 click/sec)"
 script = ExtResource("8_kky4p")
 
@@ -178,49 +179,49 @@ script = ExtResource("13_nalor")
 
 [node name="SellAllRock" type="Button" parent="CanvasLayer/SellAllButtons"]
 layout_mode = 2
-theme = ExtResource("3_yyhw1")
+theme = ExtResource("9_ss1hi")
 theme_override_font_sizes/font_size = 22
 text = "Sell all"
 
 [node name="SellAllCopper" type="Button" parent="CanvasLayer/SellAllButtons"]
 layout_mode = 2
-theme = ExtResource("3_yyhw1")
+theme = ExtResource("9_ss1hi")
 theme_override_font_sizes/font_size = 22
 text = "Sell all"
 
 [node name="SellAllIron" type="Button" parent="CanvasLayer/SellAllButtons"]
 layout_mode = 2
-theme = ExtResource("3_yyhw1")
+theme = ExtResource("9_ss1hi")
 theme_override_font_sizes/font_size = 22
 text = "Sell all"
 
 [node name="SellAllGold" type="Button" parent="CanvasLayer/SellAllButtons"]
 layout_mode = 2
-theme = ExtResource("3_yyhw1")
+theme = ExtResource("9_ss1hi")
 theme_override_font_sizes/font_size = 22
 text = "Sell all"
 
 [node name="SellAllZinc" type="Button" parent="CanvasLayer/SellAllButtons"]
 layout_mode = 2
-theme = ExtResource("3_yyhw1")
+theme = ExtResource("9_ss1hi")
 theme_override_font_sizes/font_size = 22
 text = "Sell all"
 
 [node name="SellAllEmerald" type="Button" parent="CanvasLayer/SellAllButtons"]
 layout_mode = 2
-theme = ExtResource("3_yyhw1")
+theme = ExtResource("9_ss1hi")
 theme_override_font_sizes/font_size = 22
 text = "Sell all"
 
 [node name="SellAllLapis" type="Button" parent="CanvasLayer/SellAllButtons"]
 layout_mode = 2
-theme = ExtResource("3_yyhw1")
+theme = ExtResource("9_ss1hi")
 theme_override_font_sizes/font_size = 22
 text = "Sell all"
 
 [node name="SellAllDiamond" type="Button" parent="CanvasLayer/SellAllButtons"]
 layout_mode = 2
-theme = ExtResource("3_yyhw1")
+theme = ExtResource("9_ss1hi")
 theme_override_font_sizes/font_size = 22
 text = "Sell all"
 
@@ -233,49 +234,49 @@ script = ExtResource("14_ok8w5")
 
 [node name="Sell10Rock" type="Button" parent="CanvasLayer/Sell10Buttons"]
 layout_mode = 2
-theme = ExtResource("3_yyhw1")
+theme = ExtResource("9_ss1hi")
 theme_override_font_sizes/font_size = 22
 text = "Sell 10"
 
 [node name="Sell10Copper" type="Button" parent="CanvasLayer/Sell10Buttons"]
 layout_mode = 2
-theme = ExtResource("3_yyhw1")
+theme = ExtResource("9_ss1hi")
 theme_override_font_sizes/font_size = 22
 text = "Sell 10"
 
 [node name="Sell10Iron" type="Button" parent="CanvasLayer/Sell10Buttons"]
 layout_mode = 2
-theme = ExtResource("3_yyhw1")
+theme = ExtResource("9_ss1hi")
 theme_override_font_sizes/font_size = 22
 text = "Sell 10"
 
 [node name="Sell10Gold" type="Button" parent="CanvasLayer/Sell10Buttons"]
 layout_mode = 2
-theme = ExtResource("3_yyhw1")
+theme = ExtResource("9_ss1hi")
 theme_override_font_sizes/font_size = 22
 text = "Sell 10"
 
 [node name="Sell10Zinc" type="Button" parent="CanvasLayer/Sell10Buttons"]
 layout_mode = 2
-theme = ExtResource("3_yyhw1")
+theme = ExtResource("9_ss1hi")
 theme_override_font_sizes/font_size = 22
 text = "Sell 10"
 
 [node name="Sell10Emerald" type="Button" parent="CanvasLayer/Sell10Buttons"]
 layout_mode = 2
-theme = ExtResource("3_yyhw1")
+theme = ExtResource("9_ss1hi")
 theme_override_font_sizes/font_size = 22
 text = "Sell 10"
 
 [node name="Sell10Lapis" type="Button" parent="CanvasLayer/Sell10Buttons"]
 layout_mode = 2
-theme = ExtResource("3_yyhw1")
+theme = ExtResource("9_ss1hi")
 theme_override_font_sizes/font_size = 22
 text = "Sell 10"
 
 [node name="Sell10Diamond" type="Button" parent="CanvasLayer/Sell10Buttons"]
 layout_mode = 2
-theme = ExtResource("3_yyhw1")
+theme = ExtResource("9_ss1hi")
 theme_override_font_sizes/font_size = 22
 text = "Sell 10"
 
@@ -284,7 +285,7 @@ offset_left = 862.0
 offset_top = 583.0
 offset_right = 1147.0
 offset_bottom = 627.0
-theme = ExtResource("3_yyhw1")
+theme = ExtResource("9_ss1hi")
 text = "Build A Rocket -->"
 
 [node name="BackButton" type="Button" parent="CanvasLayer"]

@@ -27,7 +27,7 @@ func _on_venus_pressed() -> void:
 		pass 
 
 func _on_earth_pressed() -> void:
-	if Global.earth_unlocked:
+	if true:
 		Global.emit_signal("bgm_earth")
 	else:
 		pass 
