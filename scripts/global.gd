@@ -31,6 +31,7 @@ var uranus_unlocked: bool = false
 var neptune_unlocked: bool = false
 var odyssey_played: bool = false
 var tutorial_finished: bool = false
+var funny_button: int = 0
 signal bgm_galaxy
 signal bgm_odyssey
 signal bgm_earth
@@ -63,6 +64,13 @@ var advancements = {
 		"desc": "Collect 50 copper to enter the industrial age.",
 		"variable_name": "copper",
 		"threshold": 50,
+		"earned": false
+	},
+	"very_funny": {
+		"title": "That was really funny",
+		"desc": "Did you press a button somewhere? Now you are stuck with my peak music choice :))",
+		"variable_name": "funny_button",
+		"threshold": 1,
 		"earned": false
 	}
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c4c1f8uqmcord"]
+[gd_scene load_steps=22 format=3 uid="uid://c4c1f8uqmcord"]
 
 [ext_resource type="Script" uid="uid://8fnnt8pc7jnq" path="res://scripts/tutorial.gd" id="1_c13y7"]
 [ext_resource type="Texture2D" uid="uid://c5wi0p73vu3qy" path="res://assets/space4.jpg" id="2_ph3nu"]
@@ -11,6 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://dowhecs3gsd0n" path="res://assets/jupiter.png" id="8_nlqja"]
 [ext_resource type="Script" uid="uid://larxvedrappu" path="res://scripts/rock_2.gd" id="10_g2equ"]
 [ext_resource type="Texture2D" uid="uid://cisndv6t1obs8" path="res://assets/rock.png" id="11_tbcdj"]
+[ext_resource type="Texture2D" uid="uid://cgpff2l1q1swg" path="res://assets/rockk.png" id="12_0hilk"]
+[ext_resource type="Texture2D" uid="uid://d3wa3u2qsal04" path="res://assets/goldingot.png" id="13_wr8iv"]
+[ext_resource type="Texture2D" uid="uid://cpr66ri6d3c1n" path="res://assets/ironingot.png" id="14_e13mp"]
+[ext_resource type="Texture2D" uid="uid://dnrdq26wdnbcp" path="res://assets/iron.png" id="15_e13mp"]
+[ext_resource type="Texture2D" uid="uid://cbkpsl2g2hml7" path="res://assets/gold.png" id="16_vrdqu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lpvoh"]
 atlas = ExtResource("3_cq4me")
@@ -144,4 +149,52 @@ texture_filter = 1
 texture = ExtResource("11_tbcdj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Rock2"]
+shape = SubResource("RectangleShape2D_ej4tf")
+
+[node name="Rock" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 674.0
+offset_top = 276.0
+offset_right = 766.0
+offset_bottom = 368.0
+texture = ExtResource("12_0hilk")
+
+[node name="goldingot" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 945.0
+offset_top = 283.0
+offset_right = 1037.0
+offset_bottom = 375.0
+texture = ExtResource("13_wr8iv")
+
+[node name="ironingot" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 794.0
+offset_top = 281.0
+offset_right = 886.0
+offset_bottom = 373.0
+texture = ExtResource("14_e13mp")
+
+[node name="Ironore" type="Area2D" parent="CanvasLayer"]
+position = Vector2(252.00005, 297)
+scale = Vector2(10, 10)
+script = ExtResource("10_g2equ")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Ironore"]
+texture_filter = 1
+texture = ExtResource("15_e13mp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Ironore"]
+shape = SubResource("RectangleShape2D_ej4tf")
+
+[node name="Goldore" type="Area2D" parent="CanvasLayer"]
+position = Vector2(92.00004, 297)
+scale = Vector2(10, 10)
+script = ExtResource("10_g2equ")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Goldore"]
+texture_filter = 1
+texture = ExtResource("16_vrdqu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Goldore"]
 shape = SubResource("RectangleShape2D_ej4tf")

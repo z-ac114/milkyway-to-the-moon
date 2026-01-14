@@ -10,6 +10,11 @@ extends Node2D
 @onready var jupiter: TextureRect = $CanvasLayer/Jupiter
 @onready var mars: TextureRect = $CanvasLayer/Mars
 @onready var rock_2: Area2D = $CanvasLayer/Rock2
+@onready var rock: TextureRect = $CanvasLayer/Rock
+@onready var ironingot: TextureRect = $CanvasLayer/ironingot
+@onready var goldingot: TextureRect = $CanvasLayer/goldingot
+@onready var ironore: Area2D = $CanvasLayer/Ironore
+@onready var goldore: Area2D = $CanvasLayer/Goldore
 
 
 var dialogue_lines = [
@@ -42,6 +47,11 @@ func _ready() -> void:
 	mars.visible = false
 	jupiter.visible = false
 	rock_2.visible = false
+	goldingot.visible = false
+	ironingot.visible = false
+	rock.visible = false
+	ironore.visible = false
+	goldore.visible = false
 	
 	start_dialogue()
 
@@ -80,7 +90,18 @@ func _show_line():
 		mars.visible = false
 		jupiter.visible = false
 	elif current_line == 7:
+		goldore.visible = true
+		ironore.visible = true
+		goldingot.visible = true
+		ironingot.visible = true
+		rock.visible = true
+	elif current_line == 8:
 		rock_2.visible = false
+		goldingot.visible = false
+		ironingot.visible = false
+		rock.visible = false
+		goldore.visible = false
+		ironore.visible = false
 	else:
 		pass
 
