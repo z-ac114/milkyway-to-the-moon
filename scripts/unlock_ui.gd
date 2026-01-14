@@ -9,6 +9,7 @@ func _ready():
 	get_tree().paused = true
 	$Anim.play("ShowUnlock")
 	Sfxmanager.play_unlock()
+	
 func _on_anim_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "ShowUnlock":
 		get_tree().paused = false

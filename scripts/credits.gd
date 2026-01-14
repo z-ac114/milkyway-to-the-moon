@@ -7,6 +7,7 @@ func _on_button_pressed() -> void:
 
 
 func _on_awesome_button_pressed() -> void:
+	Global.emit_signal("bgm_loop")
 	Sfxmanager.play_button_click()
 	Global.coin = 9223372036854775807
 	Global.rock = 9223372036854775807

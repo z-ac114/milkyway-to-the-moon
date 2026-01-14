@@ -9,14 +9,19 @@ extends Node2D
 @onready var mercury: TextureRect = $CanvasLayer/Mercury
 @onready var jupiter: TextureRect = $CanvasLayer/Jupiter
 @onready var mars: TextureRect = $CanvasLayer/Mars
+@onready var rock_2: Area2D = $CanvasLayer/Rock2
+
 
 var dialogue_lines = [
 	"Welcome to the game!",
 	"I am Kuro.",
 	"I am trying to get to space!",
-	"Before the game starts, this is a tutorial part to make sure \nyou know how to play!",
+	"Before the game starts, this is a tutorial part to make sure you know how to play!",
 	"You can press the space bar to skip the typing or go to the next line.",
 	"This game is a space-themed clicker game!",
+	"You get resources by clicking the spinning rock on the left of your screen.",
+	"As you get more and more rocks, you can get more minerals!",
+	"You can use the minerals obtained to upgrade rocket parts",
 	"The tutorial is now ending."
 ]
 
@@ -36,6 +41,7 @@ func _ready() -> void:
 	mercury.visible = false
 	mars.visible = false
 	jupiter.visible = false
+	rock_2.visible = false
 	
 	start_dialogue()
 
@@ -60,19 +66,23 @@ func _show_line():
 		
 	else:
 		_end_dialogue()
-	if current_line == 7:
+	if current_line == 5:
 		earth.visible = true
 		venus.visible = true
 		mercury.visible = true
 		mars.visible = true
 		jupiter.visible = true
-	elif current_line == 8:
+	elif current_line == 6:
+		rock_2.visible = true
 		earth.visible = false
 		venus.visible = false
 		mercury.visible = false
 		mars.visible = false
 		jupiter.visible = false
-	
+	elif current_line == 7:
+		rock_2.visible = false
+	else:
+		pass
 
 func _type_text(line: String) -> void:
 	if line.is_empty():

@@ -1,70 +1,62 @@
 extends AudioStreamPlayer
 
+const TRACKS = {
+	"bgm_galaxy":  {"path": "res://audio/space fantasy.mp3", "offset": -10},
+	"bgm_odyssey": {"path": "res://audio/prologue.mp3",       "offset": 0},
+	"main_theme":  {"path": "res://audio/g2w4.mp3",          "offset": -10},
+	"bgm_earth":   {"path": "res://audio/earth.mp3",         "offset": 0},
+	"bgm_mercury": {"path": "res://audio/mercury.mp3",       "offset": 20},
+	"bgm_venus":   {"path": "res://audio/venus.mp3",         "offset": 20},
+	"bgm_mars":    {"path": "res://audio/mars.mp3",          "offset": 0},
+	"bgm_jupiter": {"path": "res://audio/jupiter.mp3",       "offset": 0},
+	"bgm_loop":    {"path": "res://audio/looping.mp3",       "offset": 0}
+}
+
 var playback_positions: Dictionary = {}
 var current_track_path: String = ""
+var is_loop_locked: bool = false
 
 func _ready() -> void:
 	var music_bus = AudioServer.get_bus_index("Music")
 	AudioServer.set_bus_volume_db(music_bus, Global.music_volume_db)
 	AudioServer.set_bus_mute(music_bus, Global.music_muted)
-
-	Global.connect("bgm_galaxy", Callable(self, "_on_play_galaxy"))
-	Global.connect("bgm_odyssey", Callable(self, "_on_play_odyssey"))
-	Global.connect("bgm_earth", Callable(self, "_on_play_earth"))
-	Global.connect("bgm_mars", Callable(self, "_on_play_mars"))
-	Global.connect("bgm_jupiter", Callable(self, "_on_play_jupiter"))
-	Global.connect("main_theme", Callable(self, "_on_play_main_theme"))
-	Global.connect("bgm_mercury", Callable(self, "_on_play_mercury"))
-	Global.connect("bgm_venus", Callable(self, "_on_play_venus"))
 	
+	for signal_name in TRACKS.keys():
+		if Global.has_signal(signal_name):
+			Global.connect(signal_name, _on_play_requested.bind(signal_name))
+
 func _process(_delta: float) -> void:
-	if not Global.play_bgm and playing:
-		stop()
-	elif Global.play_bgm and not playing:
-		play(playback_positions.get(current_track_path, 0.0))
+	if Global.play_bgm != playing:
+		if Global.play_bgm:
+			play(playback_positions.get(current_track_path, 0.0))
+		else:
+			stop()
 
-func _on_play_galaxy() -> void:
-	var music_bus = AudioServer.get_bus_index("Music")
-	_switch_and_play("res://audio/space fantasy.mp3", Global.music_volume_db-10, false)
+func _on_play_requested(track_key: String) -> void:
+	if is_loop_locked and track_key != "bgm_loop":
+		return
+	
+	if track_key == "bgm_loop":
+		is_loop_locked = true
+	
+	var data = TRACKS[track_key]
+	var target_db = Global.music_volume_db + data.get("offset", 0)
+	var is_instant = data.get("instant", false)
+	
+	_switch_and_play(data["path"], target_db, is_instant)
 
-func _on_play_odyssey() -> void:
-	var music_bus = AudioServer.get_bus_index("Music")
-	_switch_and_play("res://audio/prologue.mp3", Global.music_volume_db, true)
-	
-func _on_play_main_theme() -> void:
-	var music_bus = AudioServer.get_bus_index("Music")
-	_switch_and_play("res://audio/g2w4.mp3", Global.music_volume_db-10, false)
-	
-func _on_play_earth() -> void:
-	var music_bus = AudioServer.get_bus_index("Music")
-	_switch_and_play("res://audio/earth.mp3", Global.music_volume_db-10, false)
-	
-func _on_play_mercury() -> void:
-	var music_bus = AudioServer.get_bus_index("Music")
-	_switch_and_play("res://audio/mercury.mp3", Global.music_volume_db+20, false)
-	
-func _on_play_venus() -> void:
-	var music_bus = AudioServer.get_bus_index("Music")
-	_switch_and_play("res://audio/venus.mp3", Global.music_volume_db+20, false)
-	
-func _on_play_mars() -> void:
-	var music_bus = AudioServer.get_bus_index("Music")
-	_switch_and_play("res://audio/mars.mp3", Global.music_volume_db, false)
-	
-func _on_play_jupiter() -> void:
-	var music_bus = AudioServer.get_bus_index("Music")
-	_switch_and_play("res://audio/jupiter.mp3", Global.music_volume_db, false)
+func _switch_and_play(new_path: String, target_db: float, instant: bool) -> void:
+	if current_track_path == new_path and playing:
+		return
 
-func _switch_and_play(new_path: String, target_db: float, is_odyseey: bool) -> void:
 	if stream:
 		playback_positions[current_track_path] = get_playback_position()
+	
 	current_track_path = new_path
 	stream = load(new_path)
-	if not is_odyseey:
-		self.volume_db = -30.0
-	else:
-		self.volume_db = Global.music_volume_db
-	var resume_time = playback_positions.get(new_path, 0.0)
-	play(resume_time)
-	var tween = create_tween()
-	tween.tween_property(self, "volume_db", target_db, 1.5).set_trans(Tween.TRANS_SINE)
+	self.volume_db = Global.music_volume_db if instant else -20.0
+	play(playback_positions.get(new_path, 0.0))
+	
+	if not instant:
+		var tween = create_tween()
+		tween.tween_property(self, "volume_db", target_db, 1.5).set_trans(Tween.TRANS_SINE)

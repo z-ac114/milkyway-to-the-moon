@@ -65,7 +65,7 @@ texture = ExtResource("2_ugv02")
 expand_mode = 3
 
 [node name="Rock" type="Area2D" parent="CanvasLayer"]
-position = Vector2(278.99997, 321.99997)
+position = Vector2(182.99997, 349.99997)
 scale = Vector2(20, 20)
 script = ExtResource("2_3c855")
 
@@ -76,24 +76,14 @@ texture = ExtResource("3_uutvs")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Rock"]
 shape = SubResource("RectangleShape2D_3c855")
 
-[node name="GeneralLabel" type="Label" parent="CanvasLayer"]
-texture_filter = 1
-offset_left = 479.0
-offset_top = 106.0
-offset_right = 730.0
-offset_bottom = 158.0
-theme = ExtResource("3_yyhw1")
-theme_override_font_sizes/font_size = 30
-script = ExtResource("6_gy76w")
-
 [node name="TutorialLabel" type="Label" parent="CanvasLayer"]
 texture_filter = 1
-offset_left = 471.0
-offset_top = 33.0
-offset_right = 1142.0
-offset_bottom = 85.0
+offset_left = 367.0
+offset_top = 73.0
+offset_right = 935.0
+offset_bottom = 121.0
 theme = ExtResource("3_yyhw1")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 35
 text = "Click the asteroid to get stone!"
 
 [node name="CoinDisplay" type="Node2D" parent="CanvasLayer"]
@@ -117,15 +107,6 @@ offset_bottom = -256.0
 theme = ExtResource("3_yyhw1")
 theme_override_font_sizes/font_size = 50
 script = ExtResource("5_gy76w")
-
-[node name="AutoClick" type="Button" parent="CanvasLayer"]
-offset_left = 711.0
-offset_top = 480.0
-offset_right = 1088.0
-offset_bottom = 529.0
-theme = ExtResource("9_ss1hi")
-text = "Auto Mine (1 click/sec)"
-script = ExtResource("8_kky4p")
 
 [node name="CPSLAbel" type="Label" parent="CanvasLayer"]
 texture_filter = 1
@@ -170,11 +151,30 @@ scale = Vector2(3.645833, 3.645833)
 sprite_frames = SubResource("SpriteFrames_xysxj")
 autoplay = "default"
 
+[node name="AutoClick" type="Button" parent="CanvasLayer"]
+offset_left = 686.0
+offset_top = 472.0
+offset_right = 1063.0
+offset_bottom = 521.0
+theme = ExtResource("9_ss1hi")
+text = "Auto Mine (1 click/sec)"
+script = ExtResource("8_kky4p")
+
+[node name="GeneralLabel" type="Label" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 375.0
+offset_top = 154.0
+offset_right = 626.0
+offset_bottom = 206.0
+theme = ExtResource("3_yyhw1")
+theme_override_font_sizes/font_size = 30
+script = ExtResource("6_gy76w")
+
 [node name="SellAllButtons" type="VBoxContainer" parent="CanvasLayer"]
-offset_left = 948.0
-offset_top = 104.0
-offset_right = 1092.0
-offset_bottom = 412.0
+offset_left = 844.0
+offset_top = 152.0
+offset_right = 988.0
+offset_bottom = 460.0
 script = ExtResource("13_nalor")
 
 [node name="SellAllRock" type="Button" parent="CanvasLayer/SellAllButtons"]
@@ -226,10 +226,10 @@ theme_override_font_sizes/font_size = 22
 text = "Sell all"
 
 [node name="Sell10Buttons" type="VBoxContainer" parent="CanvasLayer"]
-offset_left = 788.0
-offset_top = 104.0
-offset_right = 932.0
-offset_bottom = 412.0
+offset_left = 684.0
+offset_top = 152.0
+offset_right = 828.0
+offset_bottom = 460.0
 script = ExtResource("14_ok8w5")
 
 [node name="Sell10Rock" type="Button" parent="CanvasLayer/Sell10Buttons"]
@@ -281,9 +281,9 @@ theme_override_font_sizes/font_size = 22
 text = "Sell 10"
 
 [node name="RocketBuilding" type="Button" parent="CanvasLayer"]
-offset_left = 862.0
+offset_left = 853.0
 offset_top = 583.0
-offset_right = 1147.0
+offset_right = 1138.0
 offset_bottom = 627.0
 theme = ExtResource("9_ss1hi")
 text = "Build A Rocket -->"

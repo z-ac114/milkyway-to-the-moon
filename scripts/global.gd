@@ -39,6 +39,7 @@ signal bgm_venus
 signal bgm_mars
 signal bgm_jupiter
 signal main_theme
+signal bgm_loop
 signal advancement_unlocked(title, description)
 
 var rocket_levels = {
@@ -50,13 +51,23 @@ var rocket_levels = {
 }
 
 var advancements = {
-	"first_rock": {"title": "Stone Age", "desc": "Mine your first rock!", "threshold": 1, "earned": false},
-	"millionaire": {"title": "Rockstar", "desc": "Reach 1,000,000 rocks!", "threshold": 1000000, "earned": false},
-	"e10_collector": {"title": "Galactic Geologist", "desc": "Reach 10,000,000,000 rocks!", "threshold": 10000000000, "earned": false}
+	"first_rock": {
+		"title": "Humble Beginnings",
+		"desc": "You mined your very first rock!",
+		"variable_name": "rock",
+		"threshold": 1,
+		"earned": false
+	},
+	"copper_age": {
+		"title": "Industrialist",
+		"desc": "Collect 50 copper to enter the industrial age.",
+		"variable_name": "copper",
+		"threshold": 50,
+		"earned": false
+	}
 }
 
 func _rock_1click():
-	check_advancements()
 	match rocktier:
 		"rock":
 			rock += randf_range(0.1,1) * rock1mult
@@ -104,6 +115,7 @@ func _rock_1click():
 			diamond += randf_range(0.1,1) * rock1mult * 0.03
 		_:
 			rock += randf_range(0.1,1) * rock1mult
+	check_advancements()
 
 func f_n(num: float) -> String:
 	if abs(num) >= 1e15:
@@ -130,9 +142,12 @@ func start_autoclick_loop():
 		start_autoclick_loop()
 
 func check_advancements():
-	for key in advancements.keys():
-		var a = advancements[key]
-		if not a.earned and rock >= a.threshold:
-			a.earned = true
-			emit_signal("advancement_unlocked", a.title, a.desc)
-			print("Unlocked: " + a.title)
+	for id in advancements:
+		var adv = advancements[id]
+		if adv["earned"]:
+			continue
+		var current_val = get(adv["variable_name"])
+		if current_val != null and current_val >= adv["threshold"]:
+			adv["earned"] = true
+			emit_signal("advancement_unlocked", adv["title"], adv["desc"])
+			print("Signal Emitted for: ", adv["title"])

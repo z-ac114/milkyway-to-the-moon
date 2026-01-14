@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c4c1f8uqmcord"]
+[gd_scene load_steps=17 format=3 uid="uid://c4c1f8uqmcord"]
 
 [ext_resource type="Script" uid="uid://8fnnt8pc7jnq" path="res://scripts/tutorial.gd" id="1_c13y7"]
 [ext_resource type="Texture2D" uid="uid://c5wi0p73vu3qy" path="res://assets/space4.jpg" id="2_ph3nu"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://b18lot253t7t" path="res://assets/mercury.png" id="7_0epgs"]
 [ext_resource type="Texture2D" uid="uid://b6c5b7j3halft" path="res://assets/mars.png" id="8_g2equ"]
 [ext_resource type="Texture2D" uid="uid://dowhecs3gsd0n" path="res://assets/jupiter.png" id="8_nlqja"]
+[ext_resource type="Script" uid="uid://larxvedrappu" path="res://scripts/rock_2.gd" id="10_g2equ"]
+[ext_resource type="Texture2D" uid="uid://cisndv6t1obs8" path="res://assets/rock.png" id="11_tbcdj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lpvoh"]
 atlas = ExtResource("3_cq4me")
@@ -38,6 +40,9 @@ animations = [{
 "name": &"default",
 "speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ej4tf"]
+size = Vector2(14, 14)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_c13y7")
@@ -74,6 +79,7 @@ layout_mode = 0
 offset_right = 1151.0
 offset_bottom = 193.0
 theme = ExtResource("3_4kmhl")
+autowrap_mode = 3
 
 [node name="ContinueLabel" type="Label" parent="CanvasLayer/Panel"]
 z_index = 2
@@ -127,3 +133,15 @@ offset_top = 115.0
 offset_right = 684.0
 offset_bottom = 207.0
 texture = ExtResource("8_g2equ")
+
+[node name="Rock2" type="Area2D" parent="CanvasLayer"]
+position = Vector2(404, 297.00003)
+scale = Vector2(10, 10)
+script = ExtResource("10_g2equ")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Rock2"]
+texture_filter = 1
+texture = ExtResource("11_tbcdj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Rock2"]
+shape = SubResource("RectangleShape2D_ej4tf")
