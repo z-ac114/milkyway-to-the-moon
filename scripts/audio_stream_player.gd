@@ -46,7 +46,9 @@ func _on_play_requested(track_key: String) -> void:
 	_switch_and_play(data["path"], target_db, is_instant)
 
 func _switch_and_play(new_path: String, target_db: float, instant: bool) -> void:
-	if current_track_path == new_path and playing:
+	if current_track_path == new_path:
+		if not playing:
+			play() 
 		return
 
 	if stream:
@@ -54,9 +56,13 @@ func _switch_and_play(new_path: String, target_db: float, instant: bool) -> void
 	
 	current_track_path = new_path
 	stream = load(new_path)
-	self.volume_db = Global.music_volume_db if instant else -20.0
-	play(playback_positions.get(new_path, 0.0))
 	
-	if not instant:
+	if instant:
+		self.volume_db = target_db
+		play(playback_positions.get(new_path, 0.0))
+	else:
+		self.volume_db = -20.0 
+		play(playback_positions.get(new_path, 0.0))
+		
 		var tween = create_tween()
 		tween.tween_property(self, "volume_db", target_db, 1.5).set_trans(Tween.TRANS_SINE)

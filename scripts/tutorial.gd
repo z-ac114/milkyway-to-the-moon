@@ -23,6 +23,7 @@ var dialogue_lines = [
 	"You get resources by clicking the spinning rock on the left of your screen.",
 	"As you get more and more rocks, you can get more minerals!",
 	"You can use the minerals obtained to upgrade rocket parts!",
+	"With all the rocket parts upgraded to the same level, you can craft a rocket!",
 	"The tutorial is now ending."
 ]
 
@@ -67,7 +68,6 @@ func _show_line() -> void:
 	if typing_tween: typing_tween.kill()
 	typing_tween = create_tween()
 	
-	# Calculate duration based on text length
 	var duration = dialogue_lines[current_line].length() * typing_speed
 	typing_tween.tween_property(text_label, "visible_ratio", 1.0, duration)
 	typing_tween.finished.connect(_finish_typing)
