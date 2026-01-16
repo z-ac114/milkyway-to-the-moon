@@ -152,28 +152,29 @@ sprite_frames = SubResource("SpriteFrames_xysxj")
 autoplay = "default"
 
 [node name="AutoClick" type="Button" parent="CanvasLayer"]
-offset_left = 686.0
+offset_left = 566.0
 offset_top = 472.0
-offset_right = 1063.0
+offset_right = 943.0
 offset_bottom = 521.0
 theme = ExtResource("9_ss1hi")
 text = "Auto Mine (1 click/sec)"
 script = ExtResource("8_kky4p")
 
-[node name="GeneralLabel" type="Label" parent="CanvasLayer"]
+[node name="GeneralLabel" type="RichTextLabel" parent="CanvasLayer"]
 texture_filter = 1
 offset_left = 375.0
 offset_top = 154.0
 offset_right = 626.0
-offset_bottom = 206.0
+offset_bottom = 528.0
 theme = ExtResource("3_yyhw1")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/bold_italics_font_size = 50
+bbcode_enabled = true
 script = ExtResource("6_gy76w")
 
 [node name="SellAllButtons" type="VBoxContainer" parent="CanvasLayer"]
-offset_left = 844.0
+offset_left = 724.0
 offset_top = 152.0
-offset_right = 988.0
+offset_right = 868.0
 offset_bottom = 460.0
 script = ExtResource("13_nalor")
 
@@ -226,9 +227,9 @@ theme_override_font_sizes/font_size = 22
 text = "Sell all"
 
 [node name="Sell10Buttons" type="VBoxContainer" parent="CanvasLayer"]
-offset_left = 684.0
+offset_left = 564.0
 offset_top = 152.0
-offset_right = 828.0
+offset_right = 708.0
 offset_bottom = 460.0
 script = ExtResource("14_ok8w5")
 

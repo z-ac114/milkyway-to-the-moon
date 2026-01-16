@@ -1,15 +1,16 @@
-extends Label
-
-@onready var label_2: Label = $"."
-
-func _process(delta):
-	label_2.text = \
-	"Rock: "    + str(Global.f_n(Global.rock))    + "\n" + \
-	"Copper: "  + str(Global.f_n(Global.copper))  + "\n" + \
-	"Iron: "    + str(Global.f_n(Global.iron))    + "\n" + \
-	"Gold: "    + str(Global.f_n(Global.gold))    + "\n" + \
-	"Zinc: "    + str(Global.f_n(Global.zinc))    + "\n" + \
-	"Emerald: " + str(Global.f_n(Global.emerald)) + "\n" + \
-	"Lapis: "   + str(Global.f_n(Global.lapis))   + "\n" + \
-	"Diamond: "   + str(Global.f_n(Global.diamond))   + "\n" + \
-	"Mult: "    + str(Global.f_n(Global.rock1mult))
+extends RichTextLabel
+func _process(_delta: float) -> void:
+	var nbsp = "\u00A0"
+	var line = ""
+	
+	line += "[img=40]res://assets/rockk.png[/img]%s%s    " % [nbsp, Global.f_n(Global.rock)]
+	line += "\n[img=40]res://assets/copperingot.png[/img]%s%s    " % [nbsp, Global.f_n(Global.copper)]
+	line += "\n[img=40]res://assets/ironingot.png[/img]%s%s    " % [nbsp, Global.f_n(Global.iron)]
+	line += "\n[img=40]res://assets/goldingot.png[/img]%s%s    " % [nbsp, Global.f_n(Global.gold)]
+	line += "\n[img=40]res://assets/zincingot.png[/img]%s%s    " % [nbsp, Global.f_n(Global.zinc)]
+	line += "\n[img=40]res://assets/emeraldd.png[/img]%s%s    " % [nbsp, Global.f_n(Global.emerald)]
+	line += "\n[img=40]res://assets/lapislazuli.png[/img]%s%s    " % [nbsp, Global.f_n(Global.lapis)]
+	line += "\n[img=40]res://assets/diamondd.png[/img]%s%s" % [nbsp, Global.f_n(Global.diamond)]
+	line += "\nMult: "    + str(Global.f_n(Global.rock1mult))
+	
+	text = line
