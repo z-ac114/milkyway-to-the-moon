@@ -7,6 +7,7 @@ func _on_button_pressed() -> void:
 
 
 func _on_awesome_button_pressed() -> void:
+	Global.tutorial_finished = true
 	Global.emit_signal("bgm_loop")
 	Global.funny_button = 1
 	Sfxmanager.play_button_click()

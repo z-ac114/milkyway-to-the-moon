@@ -108,7 +108,7 @@ func _update_visuals(line_index: int) -> void:
 			dino_2.show()
 			rocketplanet.show()
 		11:
-			dino.hide()
+			dino.show()
 			rocketplanet.hide()
 			dino_2.hide()
 

@@ -19,13 +19,18 @@ extends Node2D
 @onready var top_cone_1: TextureRect = $TopCone1
 @onready var rocket: TextureRect = $Rocket
 @onready var rocket_2: TextureRect = $Rocket2
+@onready var plating_cost: RichTextLabel = $PlatingCost
+@onready var engine_cost: RichTextLabel = $EngineCost
+@onready var fins_cost: RichTextLabel = $FinsCost
+@onready var tank_cost: RichTextLabel = $TankCost
+@onready var topcone_cost: RichTextLabel = $TopconeCost
 
 var rocket_parts = {
 	"plating": {"costs":[{"copper":10},{"iron":15,"copper":10},{"gold":20,"iron":15},{"zinc":25,"gold":20},{"emerald":30,"zinc":25},{"lapis":35,"emerald":30},{"diamond":40,"lapis":35}]},
 	"engine": {"costs":[{"copper":12},{"iron":18,"copper":12},{"gold":24,"iron":18},{"zinc":30,"gold":24},{"emerald":36,"zinc":30},{"lapis":42,"emerald":36},{"diamond":50,"lapis":42}]},
-	"fins": {"costs":[{"copper":8},{"iron":12,"copper":8},{"gold":16,"iron":12},{"zinc":20,"gold":16},{"emerald":24,"zinc":20},{"lapis":28,"emerald":24},{"diamond":32,"lapis":28}]},
+	"fins": {"costs":[{"copper":16},{"iron":24,"copper":16},{"gold":32,"iron":24},{"zinc":40,"gold":32},{"emerald":48,"zinc":40},{"lapis":56,"emerald":48},{"diamond":64,"lapis":56}]},
 	"topcone": {"costs":[{"copper":14},{"iron":20,"copper":14},{"gold":26,"iron":20},{"zinc":32,"gold":26},{"emerald":38,"zinc":32},{"lapis":44,"emerald":38},{"diamond":50,"lapis":44}]},
-	"tank": {"costs":[{"copper":16},{"iron":22,"copper":16},{"gold":28,"iron":22},{"zinc":34,"gold":28},{"emerald":40,"zinc":34},{"lapis":46,"emerald":40},{"diamond":52,"lapis":46}]}
+	"tank": {"costs":[{"copper":32},{"iron":44,"copper":32},{"gold":56,"iron":44},{"zinc":68,"gold":56},{"emerald":80,"zinc":68},{"lapis":92,"emerald":80},{"diamond":104,"lapis":92}]}
 }
 
 var plating_textures = [
@@ -116,6 +121,52 @@ func _update_textures():
 	tank_1.texture = tank_textures[Global.rocket_levels["tank"]]
 	tank_2.texture = tank_textures[Global.rocket_levels["tank"]]
 	top_cone_1.texture = top_cone_textures[Global.rocket_levels["topcone"]]
+	_update_cost_display()
+	
+func _update_cost_display():
+	update_specific_cost("plating", plating_cost)
+	update_specific_cost("engine", engine_cost) 
+	update_specific_cost("fins", fins_cost)
+	update_specific_cost("tank", tank_cost) 
+	update_specific_cost("topcone", topcone_cost)  
+
+func update_specific_cost(part_name: String, label_node: RichTextLabel):
+	var level = Global.rocket_levels[part_name]
+	var costs_list = rocket_parts[part_name]["costs"]
+	var nbsp = "\u00A0" 
+	
+	if level < costs_list.size():
+		var next_cost = costs_list[level]
+		var cost_string = "Cost: "
+		
+		for material in next_cost.keys():
+			var amount = next_cost[material]
+			var icon_path = ""
+			
+			# Identify the icon
+			match material:
+				"rock": icon_path = "res://assets/rockk.png"
+				"copper": icon_path = "res://assets/copperingot.png"
+				"iron": icon_path = "res://assets/ironingot.png"
+				"gold": icon_path = "res://assets/goldingot.png"
+				"zinc": icon_path = "res://assets/zincingot.png"
+				"emerald": icon_path = "res://assets/emeraldd.png"
+				"lapis": icon_path = "res://assets/lapislazuli.png"
+				"diamond": icon_path = "res://assets/diamondd.png"
+
+			var player_has = Global.get(material)
+			var color_tag = ""
+			var end_tag = ""
+			
+			if player_has < amount:
+				color_tag = "[color=red]"
+				end_tag = "[/color]"
+			
+			cost_string += "[img=24]%s[/img]%s%s%s%s  " % [icon_path, nbsp, color_tag, str(amount), end_tag]
+		
+		label_node.text = cost_string
+	else:
+		label_node.text = part_name.capitalize() + ": [color=#FFD700]MAX[/color]"
 
 func _on_back_button_pressed() -> void:
 	Sfxmanager.play_button_click()

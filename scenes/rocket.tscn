@@ -11,14 +11,15 @@
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_8kmw3")
 
-[node name="Display1" type="Label" parent="."]
+[node name="Display1" type="RichTextLabel" parent="."]
 texture_filter = 1
-offset_left = 444.0
-offset_top = 435.0
-offset_right = 590.0
-offset_bottom = 642.0
+offset_left = 15.0
+offset_top = 76.0
+offset_right = 452.0
+offset_bottom = 190.0
 theme = ExtResource("3_agf72")
-theme_override_font_sizes/font_size = 20
+bbcode_enabled = true
+autowrap_mode = 2
 horizontal_alignment = 1
 script = ExtResource("4_y2y7n")
 
@@ -71,102 +72,103 @@ theme = ExtResource("3_agf72")
 text = "Craft Rocket"
 
 [node name="UpgradePlatingButton" type="Button" parent="."]
-offset_left = 600.0
-offset_top = 208.0
-offset_right = 863.0
-offset_bottom = 252.0
+offset_left = 952.0
+offset_top = 152.0
+offset_right = 1138.0
+offset_bottom = 196.0
 theme = ExtResource("3_agf72")
-text = "Upgrade Plating"
+text = "Upgrade"
 
 [node name="UpgradeEngineButton" type="Button" parent="."]
-offset_left = 600.0
-offset_top = 286.0
-offset_right = 865.0
-offset_bottom = 330.0
+offset_left = 952.0
+offset_top = 222.0
+offset_right = 1139.0
+offset_bottom = 266.0
 theme = ExtResource("3_agf72")
-text = "Upgrade Engine"
+text = "Upgrade"
 
 [node name="UpgradeFinsButton" type="Button" parent="."]
-offset_left = 600.0
-offset_top = 365.0
-offset_right = 806.0
-offset_bottom = 409.0
+offset_left = 960.0
+offset_top = 301.0
+offset_right = 1132.0
+offset_bottom = 345.0
 theme = ExtResource("3_agf72")
-text = "Upgade Fins"
+text = "Upgrade"
 
 [node name="UpgradeTopConeButton" type="Button" parent="."]
-offset_left = 600.0
-offset_top = 447.0
-offset_right = 900.0
-offset_bottom = 491.0
+offset_left = 946.0
+offset_top = 379.0
+offset_right = 1149.0
+offset_bottom = 423.0
 theme = ExtResource("3_agf72")
-text = "Upgrade Top Cone"
+text = "Upgrade"
 
 [node name="UpgradeTankButton" type="Button" parent="."]
-offset_left = 600.0
-offset_top = 509.0
-offset_right = 830.0
-offset_bottom = 553.0
+offset_left = 952.0
+offset_top = 445.0
+offset_right = 1144.0
+offset_bottom = 489.0
 theme = ExtResource("3_agf72")
-text = "Upgrade Tank"
+text = "Upgrade"
 
 [node name="Plating1" type="TextureRect" parent="."]
 texture_filter = 1
 offset_left = 60.0
-offset_top = 150.0
+offset_top = 182.0
 offset_right = 278.0
-offset_bottom = 368.0
+offset_bottom = 400.0
 scale = Vector2(0.5, 0.5)
 
 [node name="Plating2" type="TextureRect" parent="."]
 texture_filter = 1
 offset_left = 200.0
-offset_top = 150.0
+offset_top = 182.0
 offset_right = 418.0
-offset_bottom = 368.0
+offset_bottom = 400.0
 scale = Vector2(0.5, 0.5)
 
 [node name="Engine1" type="TextureRect" parent="."]
 texture_filter = 1
 offset_left = 330.0
-offset_top = 150.0
+offset_top = 182.0
 offset_right = 548.0
-offset_bottom = 368.0
+offset_bottom = 400.0
 scale = Vector2(0.5, 0.5)
 
 [node name="Fins1" type="TextureRect" parent="."]
 texture_filter = 1
 offset_left = 330.0
-offset_top = 300.0
+offset_top = 332.0
 offset_right = 548.0
-offset_bottom = 518.0
+offset_bottom = 550.0
 scale = Vector2(0.5, 0.5)
 
 [node name="Fins2" type="TextureRect" parent="."]
 texture_filter = 1
 offset_left = 60.0
-offset_top = 300.0
+offset_top = 332.0
 offset_right = 278.0
-offset_bottom = 518.0
+offset_bottom = 550.0
 scale = Vector2(0.5, 0.5)
 
 [node name="Tank1" type="TextureRect" parent="."]
 texture_filter = 1
 offset_left = 60.0
-offset_top = 450.0
+offset_top = 482.0
 offset_right = 278.0
-offset_bottom = 668.0
+offset_bottom = 700.0
 scale = Vector2(0.5, 0.5)
 
 [node name="Tank2" type="TextureRect" parent="."]
 texture_filter = 1
 offset_left = 330.0
-offset_top = 450.0
+offset_top = 482.0
 offset_right = 548.0
-offset_bottom = 668.0
+offset_bottom = 700.0
 scale = Vector2(0.5, 0.5)
 
 [node name="Rocket" type="TextureRect" parent="."]
+visible = false
 texture_filter = 1
 offset_left = 60.0
 offset_top = 150.0
@@ -179,18 +181,18 @@ stretch_mode = 5
 [node name="Rocket2" type="TextureRect" parent="."]
 texture_filter = 1
 offset_left = 200.0
-offset_top = 300.0
+offset_top = 332.0
 offset_right = 418.0
-offset_bottom = 518.0
+offset_bottom = 550.0
 scale = Vector2(0.5, 0.5)
 stretch_mode = 5
 
 [node name="TopCone1" type="TextureRect" parent="."]
 texture_filter = 1
 offset_left = 200.0
-offset_top = 450.0
+offset_top = 482.0
 offset_right = 418.0
-offset_bottom = 668.0
+offset_bottom = 700.0
 scale = Vector2(0.5, 0.5)
 
 [node name="LaunchButton" type="Button" parent="."]
@@ -212,6 +214,118 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_fa8w1")
 expand_mode = 3
+
+[node name="PlatingLabel" type="Label" parent="."]
+offset_left = 499.0
+offset_top = 150.0
+offset_right = 608.0
+offset_bottom = 188.0
+theme = ExtResource("3_agf72")
+text = "Plating"
+
+[node name="PartLabel" type="Label" parent="."]
+offset_left = 499.0
+offset_top = 85.0
+offset_right = 608.0
+offset_bottom = 123.0
+theme = ExtResource("3_agf72")
+text = "Part"
+horizontal_alignment = 1
+
+[node name="CostLabel" type="Label" parent="."]
+offset_left = 731.0
+offset_top = 85.0
+offset_right = 840.0
+offset_bottom = 123.0
+theme = ExtResource("3_agf72")
+text = "Cost"
+horizontal_alignment = 1
+
+[node name="Upgrade!" type="Label" parent="."]
+offset_left = 971.0
+offset_top = 85.0
+offset_right = 1116.0
+offset_bottom = 123.0
+theme = ExtResource("3_agf72")
+text = "Upgrade!"
+horizontal_alignment = 1
+
+[node name="EngineLabel" type="Label" parent="."]
+offset_left = 499.0
+offset_top = 222.0
+offset_right = 610.0
+offset_bottom = 260.0
+theme = ExtResource("3_agf72")
+text = "Engine"
+
+[node name="PlatingCost" type="RichTextLabel" parent="."]
+offset_left = 662.0
+offset_top = 150.0
+offset_right = 936.0
+offset_bottom = 188.0
+theme = ExtResource("3_agf72")
+bbcode_enabled = true
+horizontal_alignment = 1
+
+[node name="EngineCost" type="RichTextLabel" parent="."]
+offset_left = 662.0
+offset_top = 222.0
+offset_right = 936.0
+offset_bottom = 260.0
+theme = ExtResource("3_agf72")
+bbcode_enabled = true
+horizontal_alignment = 1
+
+[node name="FinsCost" type="RichTextLabel" parent="."]
+offset_left = 662.0
+offset_top = 306.0
+offset_right = 936.0
+offset_bottom = 344.0
+theme = ExtResource("3_agf72")
+bbcode_enabled = true
+horizontal_alignment = 1
+
+[node name="TankCost" type="RichTextLabel" parent="."]
+offset_left = 662.0
+offset_top = 447.0
+offset_right = 936.0
+offset_bottom = 485.0
+theme = ExtResource("3_agf72")
+bbcode_enabled = true
+horizontal_alignment = 1
+
+[node name="TopconeCost" type="RichTextLabel" parent="."]
+offset_left = 662.0
+offset_top = 378.0
+offset_right = 936.0
+offset_bottom = 416.0
+theme = ExtResource("3_agf72")
+bbcode_enabled = true
+horizontal_alignment = 1
+
+[node name="FinsLabel" type="Label" parent="."]
+offset_left = 499.0
+offset_top = 306.0
+offset_right = 608.0
+offset_bottom = 344.0
+theme = ExtResource("3_agf72")
+text = "Fins"
+
+[node name="TopconeLabel" type="Label" parent="."]
+offset_left = 499.0
+offset_top = 382.0
+offset_right = 645.0
+offset_bottom = 420.0
+theme = ExtResource("3_agf72")
+text = "Top Cone"
+
+[node name="TankLabel" type="Label" parent="."]
+offset_left = 499.0
+offset_top = 447.0
+offset_right = 645.0
+offset_bottom = 485.0
+theme = ExtResource("3_agf72")
+text = "Tanks"
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="LaunchButton" to="." method="_on_launch_button_pressed"]
